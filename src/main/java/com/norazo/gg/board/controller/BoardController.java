@@ -6,4 +6,6 @@ public class BoardController {
 	//송정현
 	
 	// TEST 깃허브
+	
+	// 슬랙 깃허브 알림 Test
 }
