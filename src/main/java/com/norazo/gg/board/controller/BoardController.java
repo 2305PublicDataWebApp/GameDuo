@@ -6,4 +6,6 @@ public class BoardController {
 	//송정현
 	
 	//asfsfaasffassaffafasfa
+	
+	//sdsfsafsfsfsafsfs
 }
