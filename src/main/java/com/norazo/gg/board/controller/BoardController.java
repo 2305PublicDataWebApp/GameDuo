@@ -8,5 +8,5 @@ public class BoardController {
 	// TEST 깃허브
 	
 
-
+	// 커밋 테스트
 }
