@@ -6,4 +6,7 @@ public class BoardController {
 	//송정현
 	
 	// TEST 깃허브
+	
+	// TEST 송정현
+	
 }
