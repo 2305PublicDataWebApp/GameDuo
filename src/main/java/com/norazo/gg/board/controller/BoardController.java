@@ -7,10 +7,5 @@ public class BoardController {
 	
 	// TEST 깃허브
 	
-<<<<<<< HEAD
-	// TEST 송정현
-	
-=======
-	// 슬랙 깃허브 알림 Test
->>>>>>> branch 'master' of https://github.com/2305PublicDataWebApp/GameDuo.git
+
 }
