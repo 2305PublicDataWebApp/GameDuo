@@ -12,6 +12,21 @@
 			<div class="container">
 				<form action="/member/register.gg" method="post">
 					<h2>회원가입</h2>
+					<ul>
+						<li>
+							<label>아이디</label>
+							<input type="text" name="memberId">
+						</li>
+						<li>
+							<label>비밀번호</label>
+							<input type="text" name="memberId">
+						</li>
+						<li>
+							<label>나이</label>
+							<input type="text" name="memberId">
+						</li>
+					</ul>
+					
 				</form>
 			</div>
 		</main>
