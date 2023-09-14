@@ -37,7 +37,7 @@ public class NoticeController {
 				, HttpServletRequest request) {
 			try {
 				String noticeAdmin = (String)session.getAttribute("memberId");
-				System.out.println("noticeWrite값" + noticeAdmin);
+				System.out.println("noticeWrite" + noticeAdmin);
 				if(noticeAdmin != null && !noticeAdmin.equals("")) {
 					notice.setNoticeAdmin(noticeAdmin);
 					
@@ -105,7 +105,7 @@ public class NoticeController {
 				try {
 					Integer totalCount = nService.getListCount();
 					PageInfo pInfo = this.getPageInfo(crrentPage, totalCount);
-					System.out.println("pInfo값:" + pInfo);
+					System.out.println("pInfo:" + pInfo);
 					List<Notice> NList = nService.selectNotice(pInfo);
 					if(!NList.isEmpty()) {
 						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");

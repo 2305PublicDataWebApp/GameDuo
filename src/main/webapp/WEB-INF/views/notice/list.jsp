@@ -34,7 +34,7 @@
 						<c:forEach var = "notice" items="${NList}" varStatus="i">    
 							<tr>
 								<td>${i.count }</td>
-								<c:url var = "detailUrl" value="/notice/detail.kh">
+								<c:url var = "detailUrl" value="/notice/detail.gg">
 									<c:param name = "noticeNo" value = "${notice.noticeNo }"></c:param>
 								</c:url>
 								<td><a href="${detailUrl }">${notice.noticeTitle }</a></td>
@@ -49,19 +49,19 @@
 					<tr align="center">
 						<td colspan="5">
 							<c:if test="${pInfo.startNavi !=1}">
-								<c:url var = "prevUrl" value="/notice/list.kh">
+								<c:url var = "prevUrl" value="/notice/list.gg">
 									<c:param name="page" value="${pInfo.startNavi-1 }"></c:param>
 								</c:url> 
 									 <a href="${prevUrl }">[이전]</a>
 								</c:if>
 								<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
-									<c:url var = "pageUrl" value="/notice/list.kh">
+									<c:url var = "pageUrl" value="/notice/list.gg">
 										<c:param name="page" value="${p }"></c:param>
 									</c:url>
 									<a href ="${pageUrl }">${p }&nbsp;</a>
 								</c:forEach>
 								<c:if test ="${pInfo.endNavi != naviTotalCount }">
-									<c:url var = "nextUrl" value= "/notice/list.kh">
+									<c:url var = "nextUrl" value= "/notice/list.gg">
 										<c:param name="page" value="${pInfo.endNavi+1 }"></c:param>
 									</c:url>
 									<a href = "${nextUrl }">[다음]</a>
@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<td colspan="4">
-								<form action="/notice/search.kh"  method="get">
+								<form action="/notice/search.gg"  method="get">
 									<select name="searchCondition">
 										<option value="all">전체</option>
 										<option value="writer">작성자</option>
@@ -85,7 +85,7 @@
 				
 						<td>
 							<button type="button"
-								onClick="location.href='/notice/write.kh'">글쓰기</button>
+								onClick="location.href='/notice/write.gg'">글쓰기</button>
 						</td>
 					</tr>
 				</tfoot>
