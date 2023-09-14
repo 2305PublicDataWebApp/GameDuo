@@ -3,9 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
-		<setting value="NULL" name="jdbcTypeForNull" />
-	</settings>
 	<typeAliases>
 		<typeAlias type="com.norazo.gg.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.norazo.gg.board.domain.Board" alias="Board"/>
@@ -15,7 +12,7 @@
 	<mappers>
 <!-- 		<mapper resource="mappers/member-mapper.xml" /> -->
 <!-- 		<mapper resource="mappers/notice-mapper.xml" /> -->
-<!-- 		<mapper resource="mappers/board-mapper.xml" /> -->
+		<mapper resource="mappers/board-mapper.xml" />
 <!-- 		<mapper resource="mappers/report-mapper.xml" /> -->
 	</mappers>
 </configuration>
