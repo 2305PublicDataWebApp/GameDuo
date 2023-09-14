@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>게시글 등록</h1>
-	<form action="/notice/write.kh" method="post" enctype="multipart/form-data">
+	<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
 			<ul>
 				<li>
 					<label>번호</label>

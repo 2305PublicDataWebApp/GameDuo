@@ -12,7 +12,7 @@
 	</resultMap>
 	
 	<insert id="insertNotice">
-		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeNo },#{noticeTitle },#{noticeContent },#{noticeAdmin},#{DEFAULT})
+		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeTitle },#{noticeContent },#{noticeAdmin},DEFAULT)
 	</insert>
 	
 	<select id="selectNoticeByNo" resultMap="noticeResultMap">

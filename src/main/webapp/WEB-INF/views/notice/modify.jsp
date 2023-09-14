@@ -8,7 +8,7 @@
 </head>
 <body>
 		<h1>공지사항 수정 modify</h1>
-		<form action="/notice/modify.kh" method="post" enctype="multipart/form-data">
+		<form action="/notice/modify.gg" method="post" enctype="multipart/form-data">
 			<input type = "hidden" name = "noticeNo" value="${notice.noticeNo }">
 
 			<ul>
