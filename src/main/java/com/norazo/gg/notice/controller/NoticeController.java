@@ -103,11 +103,10 @@ public class NoticeController {
 				try {
 					Integer totalCount = nService.getListCount();
 					PageInfo pInfo = this.getPageInfo(crrentPage, totalCount);
-<<<<<<< HEAD
 					System.out.println("pInfo:" + pInfo);
-=======
+
 					System.out.println("pInfo" + pInfo);
->>>>>>> branch 'master' of https://github.com/2305PublicDataWebApp/GameDuo.git
+
 					List<Notice> NList = nService.selectNotice(pInfo);
 					if(!NList.isEmpty()) {
 						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");
