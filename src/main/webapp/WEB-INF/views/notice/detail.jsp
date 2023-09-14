@@ -26,12 +26,12 @@
 			<div>
 				<button type="button" onclick="showModifyPage();">수정하기</button>
 				<button>삭제하기</button>
-				<a href="/notice/list.kh">목록으로</a>
+				<a href="/notice/list.gg">목록으로</a>
 			</div>
 			<script>
 				function showModifyPage() {
 					const noticeNo = "${notice.noticeNo}";
-					location.href="/notice/modify.kh?noticeNo="+noticeNo;
+					location.href="/notice/modify.gg?noticeNo="+noticeNo;
 				}
 			</script>
 </body>
