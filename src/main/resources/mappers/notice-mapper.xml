@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeMapper">
+	<resultMap type="notice" id="noticeResultMap">
+		<id 	property="noticeNo" 			column="NOTICE_NO" />
+		<result property="noticeTitle" 		column="NOTICE_TITLE" />
+		<result property="noticeContent" 		column="NOTICE_CONTENT" />
+		<result property="noticeAdmin" 		column="NOTICE_ADMIN" />
+		<result property="nCreateDate" 			column="N_CREATE_DATE" />
+	</resultMap>
+	
+	<insert id="insertNotice">
+		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeNo },#{noticeTitle },#{noticeContent },#{noticeAdmin},#{DEFAULT})
+	</insert>
+	
+	<select id="selectNoticeByNo" resultMap="noticeResultMap">
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo } <!-- 기본적으론 value 근데 헷갈릴수잇으므로 noticeNo -->
+	</select>
+	
+	
+</mapper>
