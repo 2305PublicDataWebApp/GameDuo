@@ -21,12 +21,10 @@
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>	
 	
-<<<<<<< HEAD
-=======
+
 	<!-- 파일 업로드 관련 빈 등록 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000000"></property>
 		<property name="maxInMemorySize" value="100000000"></property>
 	</bean>
->>>>>>> branch 'master' of https://github.com/2305PublicDataWebApp/GameDuo.git
 </beans>
