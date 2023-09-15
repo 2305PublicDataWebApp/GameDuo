@@ -16,6 +16,13 @@ public interface MemberService {
 	 * @param member
 	 * @return
 	 */
-	Member memberLoginCheck(Member member);
+	public Member memberLoginCheck(Member member);
+
+	/**
+	 * 회원 상세 조회 Service
+	 * @param memberId
+	 * @return
+	 */
+	public Member showOneById(String memberId);
 
 }

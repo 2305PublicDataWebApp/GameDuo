@@ -94,7 +94,35 @@ public class MemberController {
 		}
 	}
 	
-	
+	@RequestMapping(value="/mypage.gg", method= {RequestMethod.GET, RequestMethod.POST})
+	public String showDetailMember(
+		HttpSession session
+		, Model model
+		) {
+		try {
+			String memberId = (String)session.getAttribute("memberId");
+			Member member = null;
+			
+			if(memberId != "" && memberId != null) {
+				member = service.showOneById(memberId);
+			}
+			if(member != null) {
+				model.addAttribute("member", member);
+				return "member/mypage";
+			} else {
+				model.addAttribute("msg", "회원정보를 완료하지 못했습니다.");
+				model.addAttribute("error", "마이페이지 조회 실패");
+				model.addAttribute("url", "/index.jsp");
+				return "common/serviceFailed";
+			}
+		} catch (Exception e) {
+			model.addAttribute("msg", "관리자에게 문의해주세요.");
+			model.addAttribute("error", e.getMessage());
+			model.addAttribute("url", "/index.jsp");
+			return "common/serviceFailed";
+		}
+		
+	}
 	
 	
 	

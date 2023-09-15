@@ -21,4 +21,10 @@ public class MemberStoreLogic implements MemberStore {
 		return mOne;
 	}
 
+	@Override
+	public Member selectOneById(SqlSession session, String memberId) {
+		Member member = session.selectOne("MemberMapper.selectOneById", memberId);
+		return member;
+	}
+
 }

@@ -22,4 +22,12 @@ public interface MemberStore {
 	 */
 	Member selectMemberLogin(SqlSession session, Member member);
 
+	/**
+	 * 회원 상세조회 Store
+	 * @param session
+	 * @param memberId
+	 * @return
+	 */
+	Member selectOneById(SqlSession session, String memberId);
+
 }

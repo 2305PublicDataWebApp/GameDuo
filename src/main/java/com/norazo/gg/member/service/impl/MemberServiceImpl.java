@@ -28,6 +28,12 @@ public class MemberServiceImpl implements MemberService {
 		Member mOne = mStore.selectMemberLogin(session, member);
 		return mOne;
 	}
+
+	@Override
+	public Member showOneById(String memberId) {
+		Member member = mStore.selectOneById(session, memberId);
+		return member;
+	}
 	
 	
 }

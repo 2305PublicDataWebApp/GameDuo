@@ -10,8 +10,9 @@
 	<body>
 		<h1>메인페이지</h1>
 		<c:if test = "${memberId ne null}">
-			<strong>${memberName }님</strong> 환영합니다. <a href="/member/logout.gg">로그아웃</a><br>
-			 
+			<strong>${memberName }님</strong> 환영합니다.<br>
+			<a href="/member/logout.gg">로그아웃</a><br>
+			<a href="/member/mypage.gg">마이페이지</a>
 		</c:if>
 	</body>
 </html>
