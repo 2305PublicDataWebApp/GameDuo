@@ -16,7 +16,7 @@
 				</li>
 				<li>
 					<label>작성자</label>
-					<input type="text" name="boardWriter">
+					<input type="text" name="boardWriter"> 
 				</li>
 				<li>
 					<label>모집게임</label>

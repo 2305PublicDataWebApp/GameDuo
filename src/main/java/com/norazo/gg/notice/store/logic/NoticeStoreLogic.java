@@ -1,14 +1,14 @@
-package com.norazo.gg.notice.storeLogic;
+package com.norazo.gg.notice.store.logic;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.norazo.gg.notice.domain.Notice;
 import com.norazo.gg.notice.domain.PageInfo;
 import com.norazo.gg.notice.store.NoticeStore;
-
 
 @Repository
 public class NoticeStoreLogic implements NoticeStore {
@@ -22,15 +22,16 @@ public class NoticeStoreLogic implements NoticeStore {
 
 	@Override
 	public int selectListCount(SqlSession sqlSession) {
-		// TODO Auto-generated method stub
 		int result = sqlSession.selectOne("NoticeMapper.selectListCount");
 		return result;
 	}
 
 	@Override
 	public List<Notice> selectNotice(SqlSession sqlSession, PageInfo pInfo) {
-		// TODO Auto-generated method stub
-		List<Notice> nList = sqlSession.selectOne("NoticeMapper.selectNotice",pInfo);
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurrentPage()-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<Notice> nList = sqlSession.selectList("NoticeMapper.selectNotice", null, rowBounds);
 		return nList;
 	}
 

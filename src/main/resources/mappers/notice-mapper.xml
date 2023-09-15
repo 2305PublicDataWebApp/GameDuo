@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NoticeMapper">
-	<resultMap type="notice" id="noticeResultMap">
+	<resultMap type="Notice" id="noticeResultMap">
 		<id 	property="noticeNo" 			column="NOTICE_NO" />
 		<result property="noticeTitle" 		column="NOTICE_TITLE" />
 		<result property="noticeContent" 		column="NOTICE_CONTENT" />
@@ -15,9 +15,16 @@
 		INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL, #{noticeTitle },#{noticeContent },#{noticeAdmin},DEFAULT)
 	</insert>
 	
+	<select id="selectNotice" resultMap="noticeResultMap">
+		SELECT * FROM NOTICE_TBL
+	</select>
+	
 	<select id="selectNoticeByNo" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo } <!-- 기본적으론 value 근데 헷갈릴수잇으므로 noticeNo -->
 	</select>
 	
+	<select id="selectListCount" resultMap="noticeResultMap">
+		SELECT COUNT(*) FROM NOTICE_TBL
+	</select>
 	
 </mapper>

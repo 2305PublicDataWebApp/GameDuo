@@ -1,4 +1,4 @@
-package com.norazo.gg.notice.serviceimpl;
+package com.norazo.gg.notice.service.impl;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.norazo.gg.notice.service.NoticeService;
 import com.norazo.gg.notice.store.NoticeStore;
 
 @Service
-public class NoticeServiceimpl implements NoticeService{
+public class NoticeServiceImpl implements NoticeService{
 
 	//의존성 주입
 		@Autowired

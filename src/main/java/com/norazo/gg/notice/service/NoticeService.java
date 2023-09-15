@@ -16,7 +16,6 @@ public interface NoticeService {
 
 		int getListCount();
 
-
 		Notice selectNoticeByNo(Integer noticeNo);
 
 

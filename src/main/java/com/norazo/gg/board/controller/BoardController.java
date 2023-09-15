@@ -51,9 +51,23 @@ public class BoardController {
 			mv.setViewName("redirect:/board/list.gg");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다");
+			mv.addObject("url", "/index.jsp");
+			mv.setViewName("common/serviceFailed");
 		}
 		return mv;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
 		Map<String, Object> fileMap = new HashMap<String, Object>();

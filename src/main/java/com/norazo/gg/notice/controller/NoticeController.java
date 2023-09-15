@@ -126,34 +126,32 @@ public class NoticeController {
 		}
 
 		
-			@RequestMapping(value="/notice/list.gg", method = RequestMethod.GET)
-			public ModelAndView showNoticeList(ModelAndView mv) {
-				mv.setViewName("notice/list");
-				return mv;
-			}
-			@RequestMapping(value="/notice/list.gg",method = RequestMethod.POST)
+//			@RequestMapping(value="/notice/list.gg", method = RequestMethod.GET)
+//			public ModelAndView showNoticeList(ModelAndView mv) {
+//				mv.setViewName("notice/list");
+//				return mv;
+//			}
+			@RequestMapping(value="/notice/list.gg",method = RequestMethod.GET)
 			public ModelAndView showNoticeList(
-					@RequestParam(value="page", required = false, defaultValue = "1")Integer crrentPage,
-					HttpServletRequest request
+					@RequestParam(value="page", required = false, defaultValue = "1")Integer currentPage
+//					,HttpServletRequest request
 					,ModelAndView mv) {
 				try {
 					Integer totalCount = nService.getListCount();
-					PageInfo pInfo = this.getPageInfo(crrentPage, totalCount);
+					PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
 					System.out.println("pInfo:" + pInfo);
-
 					List<Notice> NList = nService.selectNotice(pInfo);
 					if(!NList.isEmpty()) {
 						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");
 					}else {
-						mv.addObject("msg","게시글 등록이 완료되지 않았습니다.");
+						mv.addObject("msg","게시글 등록이 완료되지 않1았습니다.");
 						mv.addObject("error","게시글 상세조회 실패");
 						mv.addObject("url","/notice/list.gg");
 						mv.setViewName("common/serviceFailed");
 					}
 					
 				}catch (Exception e) {
-					// TODO: handle exception
-					mv.addObject("msg","게시글 등록이 완료되지 않았습니다.");
+					mv.addObject("msg","게시글 목록 조회가 완료되지 않았습니다.");
 					mv.addObject("error","게시글 상세조회 실패");
 					mv.addObject("url", "/notice/write.gg");
 					mv.setViewName("common/serviceFailed");
@@ -163,13 +161,19 @@ public class NoticeController {
 		}
 		
 			
-			
-			
-			private PageInfo getPageInfo(Integer crrentPage, Integer totalCount) {
-				// TODO Auto-generated method stub
+			private PageInfo getPageInfo(Integer currentPage, Integer totalCount) {
+				int recordCountPerPage = 10; // 한페이징보여질 갯수
+				int naviCountPerPage = 10; // 몇개씩할건지
+				int naviTotalCount;
 				
-				
-				return null;
+				naviTotalCount = (int)Math.ceil((double)totalCount/recordCountPerPage); //내장객에 올림 Math.ceil ex) 102 /10 = 10.2 => 11.0 앞에잇는 int로 0을잘라서 넣게함!
+				int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;
+				int endNavi = startNavi + naviCountPerPage -1;
+				if(endNavi > naviTotalCount) {
+					endNavi = naviTotalCount;
+				}
+				PageInfo pInfo = new PageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
+				return pInfo;
 			}
 }
 
