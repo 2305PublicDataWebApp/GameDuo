@@ -1,92 +1,128 @@
 package com.norazo.gg.member.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Member {
+	
 	private int memberNo;
 	private String memberId;
 	private String memberPwd;
+	private String memberName;
 	private int memberAge;
-	private char memberGender;
+	private String memberGender;
 	private String memberEmail;
 	private String memberPhone;
 	private String memberAddress;
 	private Date memberCreateDate;
-	private char memberBlackStauts;
-	private char memberAdminStatus;
+	private String memberBlackStauts;
+	private String memberAdminStatus;
+	
 	public int getMemberNo() {
 		return memberNo;
 	}
+
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
+
 	public String getMemberId() {
 		return memberId;
 	}
+
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
+
 	public String getMemberPwd() {
 		return memberPwd;
 	}
+
 	public void setMemberPwd(String memberPwd) {
 		this.memberPwd = memberPwd;
 	}
+	
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
 	public int getMemberAge() {
 		return memberAge;
 	}
+
 	public void setMemberAge(int memberAge) {
 		this.memberAge = memberAge;
 	}
-	public char getMemberGender() {
+
+	public String getMemberGender() {
 		return memberGender;
 	}
-	public void setMemberGender(char memberGender) {
+
+	public void setMemberGender(String memberGender) {
 		this.memberGender = memberGender;
 	}
+
 	public String getMemberEmail() {
 		return memberEmail;
 	}
+
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
 	}
+
 	public String getMemberPhone() {
 		return memberPhone;
 	}
+
 	public void setMemberPhone(String memberPhone) {
 		this.memberPhone = memberPhone;
 	}
+
 	public String getMemberAddress() {
 		return memberAddress;
 	}
+
 	public void setMemberAddress(String memberAddress) {
 		this.memberAddress = memberAddress;
 	}
+
 	public Date getMemberCreateDate() {
 		return memberCreateDate;
 	}
+
 	public void setMemberCreateDate(Date memberCreateDate) {
 		this.memberCreateDate = memberCreateDate;
 	}
-	public char getMemberBlackStauts() {
+
+	public String getMemberBlackStauts() {
 		return memberBlackStauts;
 	}
-	public void setMemberBlackStauts(char memberBlackStauts) {
+
+	public void setMemberBlackStauts(String memberBlackStauts) {
 		this.memberBlackStauts = memberBlackStauts;
 	}
-	public char getMemberAdminStatus() {
+
+	public String getMemberAdminStatus() {
 		return memberAdminStatus;
 	}
-	public void setMemberAdminStatus(char memberAdminStatus) {
+
+	public void setMemberAdminStatus(String memberAdminStatus) {
 		this.memberAdminStatus = memberAdminStatus;
 	}
+
 	@Override
 	public String toString() {
-		return "È¸¿ø°¡ÀÔ [È¸¿ø¹øÈ£=" + memberNo + ", È¸¿ø¾ÆÀÌµğ=" + memberId + ", È¸¿øºñ¹Ğ¹øÈ£=" + memberPwd + ", È¸¿ø³ªÀÌ="
-				+ memberAge + ", È¸¿ø¼ºº°=" + memberGender + ", È¸¿øÀÌ¸ŞÀÏ=" + memberEmail + ", È¸¿øÀüÈ­¹øÈ£=" + memberPhone
-				+ ", È¸¿øÁÖ¼Ò=" + memberAddress + ", È¸¿ø»ı¼º³¯Â¥=" + memberCreateDate + ", È¸¿øºí·¢¿©ºÎ="
-				+ memberBlackStauts + ", È¸¿ø°ü¸®ÀÚ¿©ºÎ=" + memberAdminStatus + "]";
+		return "íšŒì›ê°€ì… [íšŒì›ë²ˆí˜¸=" + memberNo + ", íšŒì›ì•„ì´ë””=" + memberId + ", íšŒì›ë¹„ë°€ë²ˆí˜¸=" + memberPwd + ", íšŒì›ì´ë¦„" + memberName + ", íšŒì›ë‚˜ì´="
+				+ memberAge + ", íšŒì›ì„±ë³„=" + memberGender + ", íšŒì›ì´ë©”ì¼=" + memberEmail + ", íšŒì›ì „í™”ë²ˆí˜¸=" + memberPhone
+				+ ", íšŒì›ì£¼ì†Œ=" + memberAddress + ", íšŒì›ìƒì„±ë‚ ì§œ=" + memberCreateDate + ", íšŒì›ë¸”ë™ì—¬ë¶€="
+				+ memberBlackStauts + ", íšŒì›ê´€ë¦¬ìì—¬ë¶€=" + memberAdminStatus + "]";
 	}
+	
+	
 	
 	
 }

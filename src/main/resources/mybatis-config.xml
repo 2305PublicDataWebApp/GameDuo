@@ -10,7 +10,7 @@
 		<typeAlias type="com.norazo.gg.report.domain.Report" alias="Report" />
 	</typeAliases>
 	<mappers>
-<!-- 		<mapper resource="mappers/member-mapper.xml" /> -->
+		<mapper resource="mappers/member-mapper.xml" />
  		<mapper resource="mappers/notice-mapper.xml" />
 		<mapper resource="mappers/board-mapper.xml" />
 <!-- 		<mapper resource="mappers/report-mapper.xml" /> -->

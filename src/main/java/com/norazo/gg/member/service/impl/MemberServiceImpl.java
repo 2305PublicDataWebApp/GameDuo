@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.norazo.gg.member.domain.Member;
 import com.norazo.gg.member.service.MemberService;
 import com.norazo.gg.member.store.MemberStore;
 
@@ -15,6 +16,18 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberStore mStore;
+
+	@Override
+	public int registerMember(Member member) {
+		int result = mStore.insertMember(session, member);
+		return result;
+	}
+
+	@Override
+	public Member memberLoginCheck(Member member) {
+		Member mOne = mStore.selectMemberLogin(session, member);
+		return mOne;
+	}
 	
 	
 }

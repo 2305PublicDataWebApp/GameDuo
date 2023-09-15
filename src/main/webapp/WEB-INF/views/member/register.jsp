@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<body>
@@ -19,14 +21,39 @@
 						</li>
 						<li>
 							<label>비밀번호</label>
-							<input type="text" name="memberId">
+							<input type="password" name="memberPwd">
 						</li>
 						<li>
 							<label>나이</label>
-							<input type="text" name="memberId">
+							<input type="text" name="memberAge">
+						</li>
+						<li>
+							<label>이름</label>
+							<input type="text" name="memberName">
+						</li>
+						<li>
+							<label>성별</label>
+							남<input type="radio" id="member-gender" name="memberGender" value="M">
+							여<input type="radio" id="member-gender" name="memberGender" value="F">
+						</li>
+						<li>
+							<label>이메일</label>
+							<input type="text" name="memberEmail">
+						</li>
+						<li>
+							<label>전화번호</label>
+							<input type="text" name="memberPhone">
+						</li>
+						<li>
+							<label>주소</label>
+							<input type="text" id="member-address" name="memberAddress">
+							<input type="button" class="address_btn" onclick="sample4_execDaumPostcode();" value="주소 검색">
 						</li>
 					</ul>
-					
+					<div class="btn_wrap">
+			            <input type="submit" value="가입하기" class="btn_submit">
+			            <input type="reset" value="초기화" class="btn_reset">
+			         </div>
 				</form>
 			</div>
 		</main>
