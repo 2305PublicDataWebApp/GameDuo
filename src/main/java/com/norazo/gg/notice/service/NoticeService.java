@@ -20,4 +20,8 @@ public interface NoticeService {
 		Notice selectNoticeByNo(Integer noticeNo);
 
 
+
+		int updateNotice(Notice notice);
+
+
 }

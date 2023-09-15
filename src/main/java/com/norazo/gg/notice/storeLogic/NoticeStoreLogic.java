@@ -37,8 +37,15 @@ public class NoticeStoreLogic implements NoticeStore {
 	@Override
 	public Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo) {
 		// TODO Auto-generated method stub
-		Notice noticeOne = sqlSession.selectOne("NoticeMapper,selectNoticeByNo",noticeNo);
+		Notice noticeOne = sqlSession.selectOne("NoticeMapper.selectNoticeByNo",noticeNo);
 		return noticeOne;
+	}
+
+	@Override
+	public int updateNotice(SqlSession sqlSession, Notice notice) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.update("NoticeMapper.updateNotice" ,notice);
+		return result;
 	}
 
 //	@Override

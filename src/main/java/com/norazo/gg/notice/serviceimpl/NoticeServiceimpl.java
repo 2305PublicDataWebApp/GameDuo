@@ -48,6 +48,13 @@ public class NoticeServiceimpl implements NoticeService{
 			Notice noticeOne = nStore.selectNoticeByNo(sqlSession,noticeNo);
 			return noticeOne;
 		}
+
+		@Override
+		public int updateNotice(Notice notice) {
+			// TODO Auto-generated method stub
+			int result = nStore.updateNotice(sqlSession,notice);
+			return result;
+		}
 		
 	
 	

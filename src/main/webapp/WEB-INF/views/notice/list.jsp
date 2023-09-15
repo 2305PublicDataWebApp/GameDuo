@@ -38,7 +38,7 @@
 									<c:param name = "noticeNo" value = "${notice.noticeNo }"></c:param>
 								</c:url>
 								<td><a href="${detailUrl }">${notice.noticeTitle }</a></td>
-								<td>${notice.noticeWrite }</td>
+								<td>${notice.noticeAdmin }</td>
 								<td>
 									<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.nCreateDate }"/>
 								</td>
@@ -58,7 +58,7 @@
 									<c:url var = "pageUrl" value="/notice/list.gg">
 										<c:param name="page" value="${p }"></c:param>
 									</c:url>
-									<a href ="${pageUrl }">${p }&nbsp;</a>
+									<a href ="${pageUrl }">${p }</a>&nbsp;
 								</c:forEach>
 								<c:if test ="${pInfo.endNavi != naviTotalCount }">
 									<c:url var = "nextUrl" value= "/notice/list.gg">

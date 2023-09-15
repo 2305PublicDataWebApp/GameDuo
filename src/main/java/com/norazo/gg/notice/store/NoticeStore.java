@@ -17,4 +17,6 @@ public interface NoticeStore {
 	List<Notice> selectNotice(SqlSession sqlSession, PageInfo pInfo);
 
 	Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo);
+
+	int updateNotice(SqlSession sqlSession, Notice notice);
 }

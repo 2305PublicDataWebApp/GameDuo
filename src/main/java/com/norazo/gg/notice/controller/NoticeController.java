@@ -87,7 +87,43 @@ public class NoticeController {
 			return mv;
 
 		}
-			
+		@RequestMapping(value="/notice/modify.gg", method=RequestMethod.POST)
+		public ModelAndView noticeModify(ModelAndView mv
+				, @ModelAttribute Notice notice
+				, HttpServletRequest request
+				, HttpSession session
+				) {
+			try {
+				String memberId = (String)session.getAttribute("memberId");
+				String NoticeAdmin = notice.getNoticeAdmin();
+				if(NoticeAdmin != null && NoticeAdmin.equals(memberId)) {
+					
+				
+				int result = nService.updateNotice(notice);
+				if(result > 0) {
+					mv.setViewName("redirect:/notice./modify.gg?noticeNo="+notice.getNoticeNo());
+				}else {
+					mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
+					mv.addObject("error", "게시글 수정 실패");
+					mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
+					mv.setViewName("common/serviceFailed");
+				}
+			}else {
+				mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
+				mv.addObject("error", "게시글 수정 실패");
+				mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
+				mv.setViewName("common/serviceFailed");
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+				mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
+				mv.addObject("error", "게시글 수정 실패");
+				mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
+				mv.setViewName("common/serviceFailed");
+			}
+			return mv;
+		
+		}
 
 		
 			@RequestMapping(value="/notice/list.gg", method = RequestMethod.GET)
@@ -104,8 +140,6 @@ public class NoticeController {
 					Integer totalCount = nService.getListCount();
 					PageInfo pInfo = this.getPageInfo(crrentPage, totalCount);
 					System.out.println("pInfo:" + pInfo);
-
-					System.out.println("pInfo" + pInfo);
 
 					List<Notice> NList = nService.selectNotice(pInfo);
 					if(!NList.isEmpty()) {
@@ -127,6 +161,10 @@ public class NoticeController {
 				
 				return mv;
 		}
+		
+			
+			
+			
 			private PageInfo getPageInfo(Integer crrentPage, Integer totalCount) {
 				// TODO Auto-generated method stub
 				

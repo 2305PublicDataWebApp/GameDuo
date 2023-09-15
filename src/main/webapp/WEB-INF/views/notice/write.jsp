@@ -10,10 +10,10 @@
 	<h1>게시글 등록</h1>
 	<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
 			<ul>
-				<li>
+				<!-- <li>
 					<label>번호</label>
 					<input type = "text" name="noticeNo">
-				</li>
+				</li> -->
 				<li>
 					<label>제목</label>
 					<input type = "text" name="noticeTitle">
