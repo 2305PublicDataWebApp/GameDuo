@@ -134,7 +134,7 @@ public class NoticeController {
 			@RequestMapping(value="/notice/list.gg",method = RequestMethod.GET)
 			public ModelAndView showNoticeList(
 					@RequestParam(value="page", required = false, defaultValue = "1")Integer currentPage
-//					,HttpServletRequest request
+					,HttpServletRequest request
 					,ModelAndView mv) {
 				try {
 					Integer totalCount = nService.getListCount();
