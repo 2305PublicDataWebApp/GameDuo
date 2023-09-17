@@ -131,33 +131,58 @@ public class NoticeController {
 //				mv.setViewName("notice/list");
 //				return mv;
 //			}
-			@RequestMapping(value="/notice/list.gg",method = RequestMethod.GET)
-			public ModelAndView showNoticeList(
-					@RequestParam(value="page", required = false, defaultValue = "1")Integer currentPage
-					,HttpServletRequest request
-					,ModelAndView mv) {
-				try {
-					Integer totalCount = nService.getListCount();
-					PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-					System.out.println("pInfo:" + pInfo);
-					List<Notice> NList = nService.selectNotice(pInfo);
-					if(!NList.isEmpty()) {
-						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");
-					}else {
-						mv.addObject("msg","게시글 등록이 완료되지 않1았습니다.");
-						mv.addObject("error","게시글 상세조회 실패");
-						mv.addObject("url","/notice/list.gg");
-						mv.setViewName("common/serviceFailed");
-					}
-					
-				}catch (Exception e) {
-					mv.addObject("msg","게시글 목록 조회가 완료되지 않았습니다.");
-					mv.addObject("error","게시글 상세조회 실패");
-					mv.addObject("url", "/notice/write.gg");
+//			@RequestMapping(value="/notice/list.gg",method = RequestMethod.GET)
+//			public ModelAndView showNoticeList(
+//					@RequestParam(value="page", required = false, defaultValue = "1")Integer currentPage
+//					,HttpServletRequest request
+//					,ModelAndView mv) {
+//				try {
+//					Integer totalCount = nService.getListCount();
+//					PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+//					System.out.println("pInfo:" + pInfo);
+//					List<Notice> NList = nService.selectNotice(pInfo);
+//					if(!NList.isEmpty()) {
+//						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");
+//					}else {
+//						mv.addObject("msg","게시글 등록이 완료되지 않1았습니다.");
+//						mv.addObject("error","게시글 상세조회 실패");
+//						mv.addObject("url","/notice/list.gg");
+//						mv.setViewName("common/serviceFailed");
+//					}
+//					
+//				}catch (Exception e) {
+//					mv.addObject("msg","게시글 목록 조회가 완료되지 않았습니다.");
+//					mv.addObject("error","게시글 상세조회 실패");
+//					mv.addObject("url", "/notice/write.gg");
+//					mv.setViewName("common/serviceFailed");
+//				}
+//				
+//				return mv;
+//		}
+		
+		@RequestMapping(value="/notice/list.gg", method=RequestMethod.GET)
+		public ModelAndView showNoticeList(
+				@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage
+				, ModelAndView mv) {
+			try {
+				Integer totalCount = nService.getListCount();
+				PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+				List<Notice> nList = nService.selectNotice(pInfo);
+				if(!nList.isEmpty()) {
+					mv.addObject("nList", nList).addObject("pInfo", pInfo).setViewName("notice/list");
+				}else {
+					mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+					mv.addObject("error", "게시글 상세 조회 실패");
+					mv.addObject("url", "/notice/list.gg");
 					mv.setViewName("common/serviceFailed");
 				}
-				
-				return mv;
+			} catch (Exception e) {
+				mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+				mv.addObject("error", e.getMessage());
+				mv.addObject("url", "/notice/write.gg");
+				mv.setViewName("common/serviceFailed");
+			}
+			return mv;
 		}
 		
 			
