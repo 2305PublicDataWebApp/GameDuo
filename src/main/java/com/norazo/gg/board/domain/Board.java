@@ -15,6 +15,9 @@ public class Board {
 	private String boardFileRename;
 	private String boardFilepath;
 	private long boardFileLength;
+	private String schedule;
+	
+	
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -88,13 +91,20 @@ public class Board {
 	public void setBoardFileLength(long boardFileLength) {
 		this.boardFileLength = boardFileLength;
 	}
+	public String getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
 	
 	@Override
 	public String toString() {
 		return "게시글 [게시글번호=" + boardNo + ", 게시글제목=" + boardTitle + ", 게시글내용=" + boardContent
 				+ ", 게시글작성자=" + boardWriter + ", 게임종류=" + gameType + ", 모집인원=" + teamSize
-				+ ", 게시글등록일=" + bCreateDate + ", 게시글수정일=" + bUpdateDate + ", 파일이름=" + getBoardFilename()
-				+ ", 파일리네임=" + getBoardFileRename() + ", 파일경로=" + getBoardFilepath() + ", 파일크기=" + boardFileLength + "]";
+				+ ", 게시글등록일=" + bCreateDate + ", 게시글수정일=" + bUpdateDate + ", 파일이름=" + boardFilename
+				+ ", 파일리네임=" + boardFileRename + ", 파일경로=" + boardFilepath + ", 파일크기="
+				+ boardFileLength + ", 일정=" + schedule + "]";
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.norazo.gg.board.domain.Board;
 import com.norazo.gg.board.service.BoardService;
+import com.norazo.gg.notice.domain.PageInfo;
 
 @Controller
 @RequestMapping("/board")
@@ -57,6 +59,30 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/list.gg", method=RequestMethod.GET)
+	public ModelAndView showBoardList(
+			@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage
+			, ModelAndView mv) {
+		try {
+			Integer totalCount = bService.getListCount();
+			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			List<Board> bList = bService.selectBoardList(pInfo);
+			if(!bList.isEmpty()) {
+				mv.addObject("bList", bList).addObject("pInfo", pInfo).setViewName("board/list");
+			}else {
+				mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+				mv.addObject("msg", "게시글 상세 조회 실패");
+				mv.addObject("url", "/board/list.kh");
+				mv.setViewName("common/errorPage");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+			mv.addObject("msg", e.getMessage());
+			mv.addObject("url", "/board/write.kh");
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
 	
 	
 	
@@ -65,8 +91,19 @@ public class BoardController {
 	
 	
 	
-	
-	
+	public PageInfo getPageInfo(Integer currentPage, Integer totalCount) {
+			int recordCountPerPage = 10;
+			int naviCountPerPage = 10;
+			int naviTotalCount;
+			naviTotalCount = (int)Math.ceil((double)totalCount/recordCountPerPage);
+			int startNavi = ((int)((double)currentPage/naviCountPerPage+0.9)-1)*naviCountPerPage+1;
+			int endNavi = startNavi + naviCountPerPage - 1;
+			if(endNavi > naviTotalCount) {
+				endNavi = naviTotalCount;
+			}
+			PageInfo pInfo = new PageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
+			return pInfo;
+		}
 	
 	
 	public Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {

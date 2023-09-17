@@ -38,6 +38,10 @@
 					</select>
 				</li>
 				<li>
+					<label>일정</label>
+					<input type="text" name="schedule">
+				</li>
+				<li>
 					<label>내용</label>
 					<textarea rows="4" cols="50" name="boardContent"></textarea>
 				</li>
