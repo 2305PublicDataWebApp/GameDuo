@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>게시글 등록</h1>
-	<form action="/write.gg" method="post" enctype="multipart/form-data">
+	<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
 			<ul>
 				<!-- <li>
 					<label>번호</label>
@@ -16,20 +16,20 @@
 				</li> -->
 				<li>
 					<label>제목</label>
-					<input type = "text" name="noticeTitle" value="${ notice.noticeTitle}">
-				</li>
+<%-- 					<input type = "text" name="noticeTitle" value="${notice.noticeTitle}">
+ --%>				
+ 					<input type = "text" name="noticeTitle">
+ 				</li>
 				<li>
 					<label>내용</label>
-					<textarea rows="4" cols="50" name="noticeContent" 	value="${notice.noticeContent }"></textarea>
-				</li>
+<%-- 					<textarea rows="4" cols="50" name="noticeContent" value="${notice.noticeContent}"></textarea>
+ --%>				<textarea rows="4" cols="50" name="noticeContent"></textarea>
+ 				</li>
 				<li>
 					<label>작성자</label>
 <%-- 					<input type="text" name="noticeAdmin" value="${notice.noticeAdmin }">
  --%>				<span>${memberId }</span>
- 
- 
- 
- </li>
+ 				</li>
 				
 			</ul> 
 			<div>
