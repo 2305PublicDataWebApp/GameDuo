@@ -16,11 +16,14 @@
 		<result property="boardFileRename" 	   column="BOARD_FILERENAME" />
 		<result property="boardFilepath"	   column="BOARD_FILEPATH" />
 		<result property="boardFileLength"     column="BOARD_FILELENGTH" />
-<!-- 		<result property="schedule"     column="SCHEDULE" /> -->
+		<result property="schedule"     column="SCHEDULE" />
 	</resultMap>
 
 	<insert id="insertBoard">
-		INSERT INTO BOARD_TBL VALUES(SEQ_BOARD_NO.NEXTVAL, #{boardTitle }, #{boardContent }, #{boardWriter }, '롤', 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT  )
+		INSERT INTO BOARD_TBL VALUES(SEQ_BOARD_NO.NEXTVAL, #{boardTitle }, #{boardContent }, 
+									#{boardWriter }, #{gameType }, #{teamSize }, DEFAULT, 
+									DEFAULT, '#{boardFilename }', #{boardFileRename },
+									 #{boardFilepath }, #{boardFileLength }, #{schedule }  )
 	</insert>
 
 	<select id="selectBoardList" resultMap="boardResultMap">

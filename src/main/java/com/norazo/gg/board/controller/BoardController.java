@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,13 @@ public class BoardController {
 			ModelAndView mv
 			, @ModelAttribute Board board
 			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
+			, HttpSession session
 			, HttpServletRequest request) {
 		try {
+			String boardWriter = (String)session.getAttribute("memberId");
+			if(boardWriter != null && !boardWriter.equals("")) {
+				board.setBoardWriter(boardWriter);
+			}
 			if(uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
 				Map<String, Object> bMap = this.saveFile(request, uploadFile);
 				board.setBoardFilename((String)bMap.get("fileName"));
@@ -53,9 +59,10 @@ public class BoardController {
 			mv.setViewName("redirect:/board/list.gg");
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 등록이 완료되지 않았습니다");
+			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/index.jsp");
 			mv.setViewName("common/serviceFailed");
-		}
+		}	
 		return mv;
 	}
 	
@@ -77,9 +84,9 @@ public class BoardController {
 			}
 		} catch (Exception e) {
 			mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
-			mv.addObject("msg", e.getMessage());
-			mv.addObject("url", "/board/write.kh");
-			mv.setViewName("common/errorPage");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/board/write.gg");
+			mv.setViewName("common/serviceFailed");
 		}
 		return mv;
 	}

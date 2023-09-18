@@ -16,26 +16,21 @@
 				</li>
 				<li>
 					<label>작성자</label>
-					<input type="text" name="boardWriter"> 
+					<span>${memberId }</span>
 				</li>
 				<li>
 					<label>모집게임</label>
-					<select>
-						<option>롤</option>
-						<option>오버워치</option>
-						<option>배틀그라운드</option>
-						<option>로스트아크</option>
-						<option>기타</option>
+					<select id="gameType" name="gameType">
+					    <option value="롤">롤</option>
+					    <option value="오버워치">오버워치</option>
+					    <option value="배틀그라운드">배틀그라운드</option>
+					    <option value="로스트아크">로스트아크</option>
+					    <option value="기타">기타</option>
 					</select>
 				</li>
 				<li>
 					<label>모집인원</label>
-					<select>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-					</select>
+					<input type="number" name="teamSize">
 				</li>
 				<li>
 					<label>일정</label>

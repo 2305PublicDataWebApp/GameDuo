@@ -20,8 +20,8 @@
 			<thead>
 				<tr>
 					<th>게임종류</th>
-					<th>글쓴이</th>
 					<th>제목</th>
+					<th>작성자</th>
 					<th>모집인원</th>
 					<th>일정</th>
 					<th>등록일시</th>
