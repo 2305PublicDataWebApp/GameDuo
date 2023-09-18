@@ -34,14 +34,25 @@
 						<c:forEach var = "notice" items="${nList}" varStatus="i">    
 							<tr>
 								<td>${i.count }</td>
+								
+								<td>${notice.noticeTitle }</td>
+								
+								
+								
 								<c:url var = "detailUrl" value="/notice/detail.gg">
 									<c:param name = "noticeNo" value = "${notice.noticeNo }"></c:param>
 								</c:url>
+								
+							
+								
 								<td><a href="${detailUrl }">${notice.noticeTitle }</a></td>
+								
 								<td>${notice.noticeAdmin }</td>
+								
 								<td>
 									<fmt:formatDate pattern="yyyy-MM-dd" value="${notice.nCreateDate }"/>
 								</td>
+								
 							</tr>
 					</c:forEach>
 				</tbody>

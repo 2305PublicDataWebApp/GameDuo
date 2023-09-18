@@ -22,7 +22,7 @@
 				</li>
 				<li>
 					<label>작성자</label>
-					<input type="text" name="noticeWriter" value="${notice.noticeWriter }" readonly>
+					<input type="text" name="noticeAdmin" value="${notice.noticeAdmin }" readonly>
 				</li>
 				
 			</ul>

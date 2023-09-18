@@ -20,7 +20,7 @@
 			</li>
 			<li>
 				<label>작성자</label>
-				<p>${notice.noticeWriter }</p>
+				<p>${notice.noticeAdmin }</p>
 			</li>
 		</ul>
 			<div>

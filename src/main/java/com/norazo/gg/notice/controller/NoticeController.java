@@ -37,7 +37,7 @@ public class NoticeController {
 				, HttpServletRequest request) {
 			try {
 				String noticeAdmin = (String)session.getAttribute("memberId");
-				System.out.println("noticeWrite" + noticeAdmin);
+				System.out.println("noticeAdmin" + noticeAdmin);
 				if(noticeAdmin != null && !noticeAdmin.equals("")) {
 					notice.setNoticeAdmin(noticeAdmin);
 					
@@ -87,6 +87,13 @@ public class NoticeController {
 			return mv;
 
 		}
+		
+		@RequestMapping(value="/notice/modify.gg", method = RequestMethod.GET)
+		public ModelAndView noticeModify(ModelAndView mv) {
+			mv.setViewName("notice/modify");
+			return mv;
+		}
+		
 		@RequestMapping(value="/notice/modify.gg", method=RequestMethod.POST)
 		public ModelAndView noticeModify(ModelAndView mv
 				, @ModelAttribute Notice notice
