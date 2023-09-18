@@ -117,8 +117,7 @@ public class Member {
 	@Override
 	public String toString() {
 		return "회원가입 [회원번호=" + memberNo + ", 회원아이디=" + memberId + ", 회원비밀번호=" + memberPwd + ", 회원이름" + memberName + ", 회원나이="
-				+ memberAge + ", 회원성별=" + memberGender + ", 회원이메일=" + memberEmail + ", 회원전화번호=" + memberPhone
-				+ ", 회원주소=" + memberAddress + ", 회원생성날짜=" + memberCreateDate + ", 회원블랙여부="
+				+ memberAge + ", 회원성별=" + memberGender + ", 회원이메일=" + memberEmail + ", 회원전화번호=" + memberPhone + ", 회원주소=" + memberAddress + ", 회원생성날짜=" + memberCreateDate + ", 회원블랙여부="
 				+ memberBlackStauts + ", 회원관리자여부=" + memberAdminStatus + "]";
 	}
 	
