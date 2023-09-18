@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+	<!-- head 파일 -->
+	<jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
 	<body>
-		<!-- head 파일 -->
-		<jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
 		<!-- 헤더 -->
 	    <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 		<!-- 메인 -->
-		<main class="main" id="main_register">
+		<main class="main member member_register" id="member_register">
 			<div class="container">
 				<form action="/member/register.gg" method="post">
 					<h2>회원가입</h2>

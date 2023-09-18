@@ -9,7 +9,7 @@ public interface MemberService {
 	 * @param member
 	 * @return
 	 */
-	int registerMember(Member member);
+	public int registerMember(Member member);
 
 	/**
 	 * 회원 로그인 Service
@@ -24,5 +24,26 @@ public interface MemberService {
 	 * @return
 	 */
 	public Member showOneById(String memberId);
+
+	/**
+	 * 회원 삭제 Service
+	 * @param memberId
+	 * @return
+	 */
+	public int deleteMember(String memberId);
+
+	/**
+	 * 회원정보 수정 전 체크 로직 Service
+	 * @param member
+	 * @return
+	 */
+	public Member selectCountCheck(Member member);
+
+	/**
+	 * 회원 정보 수정 Service
+	 * @param member
+	 * @return
+	 */
+	public int updateMember(Member member);
 
 }
