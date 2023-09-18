@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게임해듀오</title>
     <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/common.css">
     <link rel="stylesheet" href="/resources/css/layout.css">
     <link rel="stylesheet" href="/resources/css/member.css">
     <link rel="stylesheet" href="/resources/css/notice.css">

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 	<!-- head 파일 -->
@@ -33,8 +32,7 @@
 						</li>
 						<li>
 							<label>성별</label>
-							남자<input type="radio" id="member-gender" name="memberGender" value="M" <c:if test="${member.memberGender eq 'M' }">checked</c:if>>
-    	           			여자<input type="radio" id="member-gender" name="memberGender" value="F" <c:if test="${member.memberGender eq 'F' }">checked</c:if>>
+							<input type="text" name="memberGender" value="${member.memberGender}" <c:if test="${member.memberGender eq 'M'}"></c:if>>
 						</li>
 						<li>
 							<label>이메일</label>

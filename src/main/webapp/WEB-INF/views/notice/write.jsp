@@ -4,39 +4,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+	<!-- head 파일 -->
+	<jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
 <body>
-	<h1>게시글 등록</h1>
-	<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
-			<ul>
-				<!-- <li>
-					<label>번호</label>
-					<input type = "text" name="noticeNo">
-				</li> -->
-				<li>
-					<label>제목</label>
-<%-- 					<input type = "text" name="noticeTitle" value="${notice.noticeTitle}">
- --%>				
- 					<input type = "text" name="noticeTitle">
- 				</li>
-				<li>
-					<label>내용</label>
-<%-- 					<textarea rows="4" cols="50" name="noticeContent" value="${notice.noticeContent}"></textarea>
- --%>				<textarea rows="4" cols="50" name="noticeContent"></textarea>
- 				</li>
-				<li>
-					<label>작성자</label>
-<%-- 					<input type="text" name="noticeAdmin" value="${notice.noticeAdmin }">
- --%>				<span>${memberId }</span>
- 				</li>
-				
-			</ul> 
-			<div>
-				<input type="submit" value="등록">
-			</div>
-	</form>
+	<!-- 헤더 -->
+	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+	<main class="main mainpage" id="mainpage">
+    	<div class="container">
+	    	<h1>게시글 등록</h1>
+			<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
+				<ul>
+					<li>
+						<label>제목</label>
+	 					<input type = "text" name="noticeTitle">
+	 				</li>
+					<li>
+						<label>내용</label>
+						<textarea rows="4" cols="50" name="noticeContent"></textarea>
+	 				</li>
+					<li>
+						<label>작성자</label>
+						<span>${memberId }</span>
+	 				</li>
+				</ul> 
+				<div>
+					<input type="submit" value="등록">
+				</div>
+			</form>
+		</div>
+    </main>
+    <!-- 푸터 -->
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
 </html>

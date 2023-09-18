@@ -6,6 +6,17 @@
 #header .logo { position:absolute; top:5px; left:50%; transform:translate(-50%,0); }
 #header .logo a { display:block; font-size:0; width:100px; height:44px; background:url(/resources/images/common/vue_logo.png) center / cover no-repeat; } 
 #header .menu_right { position:absolute; top:18px; right:30px; display:flex; }
-#header .menu_right_item:nth-child(2) a { margin:0 10px; }
+#header .menu_right_item a { margin-right:10px; }
+#header .session { border-bottom:1px solid #000; }
 
 /* footer */
+#footer { background:#2f3238; padding:40px 0; }
+#footer .fot_topnavi { display:flex; justify-content:center; }
+#footer .fot_topnavi_item { padding:0 13px; }
+#footer .fot_topnavi_item a { color:#b1b3b9; position:relative; }
+#footer .fot_topnavi_item a:after { content:""; display:block; width:1px; height:16px; background:#b1b3b9; position:absolute; top:50%; right:-13px; transform:translate(0,-50%); }
+#footer .fot_topnavi_item:last-child a:after { display:none; }
+#footer .fot_topnavi_item.white_txt a { color:#fff; } 
+#footer .copy_right_txt { font-size:14px; margin:20px 0 0; text-align:center; color:#fff; }
+
+
