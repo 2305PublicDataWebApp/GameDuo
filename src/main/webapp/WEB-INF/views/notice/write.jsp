@@ -3,13 +3,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
-	<!-- head 파일 -->
-	<jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
-<body>
+	<html>
+		<!-- head 파일 -->
+		<jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
+	<body>
 	<!-- 헤더 -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-	<main class="main mainpage" id="mainpage">
+	<main class="main notice notice_write" id="notice_write">
     	<div class="container">
 	    	<h1>게시글 등록</h1>
 			<form action="/notice/write.gg" method="post" enctype="multipart/form-data">
