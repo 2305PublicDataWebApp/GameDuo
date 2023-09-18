@@ -77,6 +77,7 @@ public class BoardController {
 			Board boardOne = bService.selectBoardNo(boardNo);
 			if(boardOne != null) {
 				List<Reply> replyList = rService.selectReplyList(boardNo);
+				System.out.println("replyList값" + replyList);
 				if(replyList.size() > 0) {
 					mv.addObject("rList", replyList);
 				}
