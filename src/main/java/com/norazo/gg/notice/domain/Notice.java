@@ -3,7 +3,7 @@ package com.norazo.gg.notice.domain;
 import java.sql.Date;
 
 	public class Notice {
-		private int noticeNo;
+		private Integer noticeNo;
 		private String noticeTitle;
 		private String noticeContent;
 		private String noticeAdmin;
@@ -12,7 +12,7 @@ import java.sql.Date;
 		public int getNoticeNo() {
 			return noticeNo;
 		}
-		public void setNoticeNo(int noticeNo) {
+		public void setNoticeNo(Integer noticeNo) {
 			this.noticeNo = noticeNo;
 		}
 		public String getNoticeTitle() {
@@ -45,7 +45,7 @@ import java.sql.Date;
 					+ ", noticeAdmin=" + noticeAdmin + ", nCreateDate=" + nCreateDate + "]";
 		}
 		
-		public Notice(int noticeNo, String noticeTitle, String noticeContent, String noticeAdmin, Date nCreateDate) {
+		public Notice(Integer noticeNo, String noticeTitle, String noticeContent, String noticeAdmin, Date nCreateDate) {
 			super();
 			this.noticeNo = noticeNo;
 			this.noticeTitle = noticeTitle;

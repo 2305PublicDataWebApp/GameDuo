@@ -17,19 +17,24 @@ import com.norazo.gg.notice.domain.Notice;
 import com.norazo.gg.notice.domain.PageInfo;
 import com.norazo.gg.notice.service.NoticeService;
 
+
 @Controller
 public class NoticeController {
 			
 		@Autowired
 		private NoticeService nService;
 		
+		
+		
+		
 		@RequestMapping(value="/notice/write.gg", method = RequestMethod.GET)
 		public ModelAndView showWriteForm(ModelAndView mv) {
 			mv.setViewName("notice/write");
-			
 			return mv;
 		}
-		@RequestMapping(value="/notice/write.gg",method = RequestMethod.POST)
+		
+		
+		@RequestMapping(value="/notice/write.gg", method = RequestMethod.POST)
 		public ModelAndView noticeRegister(
 				ModelAndView mv
 				, @ModelAttribute Notice notice
@@ -89,10 +94,23 @@ public class NoticeController {
 		}
 		
 		@RequestMapping(value="/notice/modify.gg", method = RequestMethod.GET)
-		public ModelAndView noticeModify(ModelAndView mv) {
-			mv.setViewName("notice/modify");
+		public ModelAndView showNoticeModify(ModelAndView mv
+				,@RequestParam("noticeNo") Integer noticeNo) {
+			try {
+				Notice notice = nService.selectNoticeByNo(noticeNo);
+				mv.addObject("notice", notice);
+				mv.setViewName("notice/modify");
+			} catch (Exception e) {
+				mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
+				mv.addObject("error", e.getMessage());
+				mv.addObject("url", "/notice/write.gg");
+				mv.setViewName("common/errorPage");
+			}
 			return mv;
+
 		}
+				
+
 		
 		@RequestMapping(value="/notice/modify.gg", method=RequestMethod.POST)
 		public ModelAndView noticeModify(ModelAndView mv
@@ -108,7 +126,7 @@ public class NoticeController {
 				
 				int result = nService.updateNotice(notice);
 				if(result > 0) {
-					mv.setViewName("redirect:/notice./modify.gg?noticeNo="+notice.getNoticeNo());
+					mv.setViewName("redirect:/notice/modify.gg?noticeNo="+notice.getNoticeNo());
 				}else {
 					mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
 					mv.addObject("error", "게시글 수정 실패");
