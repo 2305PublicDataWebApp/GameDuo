@@ -27,4 +27,11 @@ public interface BoardService {
 	 * @return
 	 */
 	List<Board> selectBoardList(PageInfo pInfo);
+
+	/**
+	 * 게시글 상세 조회 Service
+	 * @param boardNo
+	 * @return
+	 */
+	Board selectBoardNo(Integer boardNo);
 }

@@ -16,7 +16,7 @@
 				</li>
 				<li>
 					<label>작성자</label>
-					<span>${memberId }</span>
+					<span>${memberName }</span>
 				</li>
 				<li>
 					<label>모집게임</label>

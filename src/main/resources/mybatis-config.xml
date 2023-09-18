@@ -3,16 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"></setting>
+	</settings>
 	<typeAliases>
 		<typeAlias type="com.norazo.gg.member.domain.Member" alias="Member"/>
 		<typeAlias type="com.norazo.gg.board.domain.Board" alias="Board"/>
 		<typeAlias type="com.norazo.gg.notice.domain.Notice"  alias="Notice"/>
-		<typeAlias type="com.norazo.gg.report.domain.Report" alias="Report" />
+<!-- 		<typeAlias type="com.norazo.gg.report.domain.Report" alias="Report" /> -->
+		<typeAlias type="com.norazo.gg.board.domain.Reply" alias="Reply" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml" />
  		<mapper resource="mappers/notice-mapper.xml" />
 		<mapper resource="mappers/board-mapper.xml" />
+		<mapper resource="mappers/reply-mapper.xml"/>
 <!-- 		<mapper resource="mappers/report-mapper.xml" /> -->
 	</mappers>
 </configuration>

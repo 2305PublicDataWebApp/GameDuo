@@ -86,7 +86,7 @@
 						</form>
 					</td>
 					<td>
-						<button>글쓰기</button>
+						<button type="button" onClick="location.href='/board/write.gg'">글쓰기</button>
 					</td>
 				</tr>
 			</tfoot>

@@ -36,4 +36,10 @@ public class BoardServiceImpl implements BoardService{
 		return bList;
 	}
 
+	@Override
+	public Board selectBoardNo(Integer boardNo) {
+		Board board = bStore.selectBoardByNo(sqlSession, boardNo);
+		return board;
+	}
+
 }

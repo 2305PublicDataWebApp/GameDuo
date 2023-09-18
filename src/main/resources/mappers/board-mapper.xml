@@ -22,7 +22,7 @@
 	<insert id="insertBoard">
 		INSERT INTO BOARD_TBL VALUES(SEQ_BOARD_NO.NEXTVAL, #{boardTitle }, #{boardContent }, 
 									#{boardWriter }, #{gameType }, #{teamSize }, DEFAULT, 
-									DEFAULT, '#{boardFilename }', #{boardFileRename },
+									DEFAULT, #{boardFilename }, #{boardFileRename },
 									 #{boardFilepath }, #{boardFileLength }, #{schedule }  )
 	</insert>
 
@@ -34,4 +34,8 @@
 		SELECT COUNT (*) FROM BOARD_TBL
 	</select>
 
+	<select id="selectBoardByNo" resultMap="boardResultMap">
+		SELECT * FROM BOARD_TBL WHERE BOARD_NO = #{boardeNo }
+	</select>
+	
 </mapper>
