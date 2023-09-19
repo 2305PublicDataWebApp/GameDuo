@@ -33,6 +33,8 @@
 				<label>내용</label>
 				<p>${board.boardContent }</p>
 				<img alt="첨부파일" src="../resources/buploadFiles/${board.boardFilename }">
+				<img alt="첨부파일" src="/resources/buploadFiles/${board.boardFilename}">
+				<img alt="첨부파일" src="../resources/buploadFiles/${board.boardFilename }">
 			</li>
 			<li>
 				<label>첨부파일</label>

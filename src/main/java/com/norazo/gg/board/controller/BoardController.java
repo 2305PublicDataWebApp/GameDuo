@@ -141,41 +141,7 @@ public class BoardController {
 			PageInfo pInfo = new PageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
 			return pInfo;
 		}
-//
-//	private Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
-//		
-//		Map<String, Object> fileMap = new HashMap<String, Object>();
-//		// resources 경로 구하기
-//		String root = request.getSession().getServletContext().getRealPath("resources");
-//		// 파일 저장경로 구하기
-//		String savePath = root + "\\buploadFiles";
-//		// 파일 이름 구하기
-//		String fileName = uploadFile.getOriginalFilename();
-//		// 파일 확장자 구하기
-//		String extension = uploadFile.getOriginalFilename().substring(uploadFile.getOriginalFilename().lastIndexOf(".")+1); //.을 포함하지않으려 +1
-//		// 시간으로 파일 리네임
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHss");
-//		String fileRename =	sdf.format(new Date(System.currentTimeMillis()))+"."+extension;
-//		// 파일 저장 전 폴더 만들기
-//		File saveFolder = new File(savePath);
-//		if(!saveFolder.exists()) {
-//			saveFolder.mkdir();
-//		}
-//		// 파일 저장
-//		File saveFile = new File(savePath+"\\"+fileRename);
-//		uploadFile.transferTo(saveFile);
-//		long fileLength = uploadFile.getSize(); // 여기 long이라 위에 object 여기 String쓰면 위에 String으로 쓸수는 있음
-//		// 파일 정보 리턴
-//		fileMap.put("fileName", fileName);
-//		fileMap.put("fileRename", fileRename);
-//		fileMap.put("filePath", "../resources/buploadFiles/"+fileRename);
-//		fileMap.put("fileLength", fileLength);
-//	
-//		return fileMap;
-//
-//	}
-//	
-//	
+
 	public Map<String, Object> saveFile(HttpServletRequest request, MultipartFile uploadFile) throws Exception {
 		Map<String, Object> fileMap = new HashMap<String, Object>();
 		// resources 경로 구하기
@@ -206,17 +172,5 @@ public class BoardController {
 		fileMap.put("fileLength", fileLength);
 		return fileMap;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
