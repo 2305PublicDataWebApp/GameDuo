@@ -25,6 +25,7 @@
 					    <option value="오버워치">오버워치</option>
 					    <option value="배틀그라운드">배틀그라운드</option>
 					    <option value="로스트아크">로스트아크</option>
+					    <option value="던전앤파이터">"던전앤파이터"</option>
 					    <option value="기타">기타</option>
 					</select>
 				</li>
@@ -42,7 +43,6 @@
 				</li>
 				<li>
 					<label>첨부파일</label>
-					<!-- String으로 받을 수 없고 변환작업이 필요함 -->
 					<input type="file" name="uploadFile">
 				</li>
 			</ul>

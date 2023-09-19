@@ -32,6 +32,7 @@
 			<li>
 				<label>내용</label>
 				<p>${board.boardContent }</p>
+				<img alt="첨부파일" src="../resources/buploadFiles/${board.boardFilename }">
 			</li>
 			<li>
 				<label>첨부파일</label>
@@ -67,8 +68,13 @@
 				<td>${reply.replyContent }</td>
 				<td>${reply.rCreateDate }</td>
 				<td>
-					<a href="javascript:void(0)" onclick="showReplyModifyForm(this,'${reply.replyContent }');">수정하기</a>
-					<a href="javascript:void(0)" onclick="deleteReply();">삭제하기</a>
+					<a href="javascript:void(0)" onclick="showReplyModifyForm(this,'${reply.replyContent}');">수정하기</a> <!-- 기본이벤트없애기 javascript:void(0) this로 foreach문에 있는것을 탐색하기위해-->
+						<c:url var="delUrl" value="/reply/delete.gg">
+							<c:param name="replyNo" value="${reply.replyNo}"></c:param>
+							<c:param name="replyWriter" value="${reply.replyWriter}"></c:param>
+							<c:param name="refBoardNo" value="${reply.refBoardNo}"></c:param>
+						</c:url>
+					<a href="javascript:void(0)" onclick="deleteReply('${delUrl }');">삭제하기</a>
 				</td>
 			</tr>
 			<tr id="replyModifyForm" style="display:none;">
@@ -78,6 +84,15 @@
 			</c:forEach>
 		</table>
 		<script>
+			const deleteBoard = (boardUrl) => {
+				location.href = boardUrl;
+			}	
+			
+			function deleteReply(url){
+				/* alert(url); */
+				location.href = url;
+			}
+			
 			function showModifyPage() {
 				const boardNo = "${board.boardNo }";
 				location.href="/board/modify.gg?boardNo="+boardNo;
