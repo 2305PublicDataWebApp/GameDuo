@@ -37,7 +37,7 @@ public class NoticeController {
 				, HttpSession session
 				, HttpServletRequest request) {
 			try {
-				String noticeAdmin = (String)session.getAttribute("memberId");
+				String noticeAdmin = (String)session.getAttribute("memberName");
 				System.out.println("noticeAdmin" + noticeAdmin);
 				if(noticeAdmin != null && !noticeAdmin.equals("")) {
 					notice.setNoticeAdmin(noticeAdmin);
@@ -115,9 +115,9 @@ public class NoticeController {
 				, HttpSession session
 				) {
 			try {
-				String memberId = (String)session.getAttribute("memberId");
+				String memberName = (String)session.getAttribute("memberName");
 				String NoticeAdmin = notice.getNoticeAdmin();
-				if(NoticeAdmin != null && NoticeAdmin.equals(memberId)) {
+				if(NoticeAdmin != null && NoticeAdmin.equals(memberName)) {
 					int result = nService.updateNotice(notice);
 					if(result > 0) {
 						mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
