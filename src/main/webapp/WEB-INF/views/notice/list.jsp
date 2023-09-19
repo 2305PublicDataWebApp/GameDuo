@@ -33,7 +33,7 @@
 					<tbody>
 							<c:forEach var = "notice" items="${nList}" varStatus="i">    
 								<tr>
-									<td>${i.count }</td>
+									<td>${notice.noticeNo }</td>
 									<td>${notice.noticeTitle }</td>
 									<c:url var = "detailUrl" value="/notice/detail.gg">
 										<c:param name = "noticeNo" value = "${notice.noticeNo }"></c:param>
