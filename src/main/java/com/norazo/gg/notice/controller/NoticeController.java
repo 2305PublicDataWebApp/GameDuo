@@ -118,13 +118,6 @@ public class NoticeController {
 				String memberId = (String)session.getAttribute("memberId");
 				String NoticeAdmin = notice.getNoticeAdmin();
 				if(NoticeAdmin != null && NoticeAdmin.equals(memberId)) {
-<<<<<<< HEAD
-					
-				
-				int result = nService.updateNotice(notice);
-				if(result > 0) {
-					mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
-=======
 					int result = nService.updateNotice(notice);
 					if(result > 0) {
 						mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
@@ -134,7 +127,6 @@ public class NoticeController {
 						mv.addObject("url", "/notice/modify.gg?noticeNo="+notice.getNoticeNo());
 						mv.setViewName("common/serviceFailed");
 					}
->>>>>>> branch 'master' of https://github.com/2305PublicDataWebApp/GameDuo.git
 				}else {
 					mv.addObject("msg", "공지사항 수정이 완료하지 않습니다.");
 					mv.addObject("error", "공지사항 수정 실패");
