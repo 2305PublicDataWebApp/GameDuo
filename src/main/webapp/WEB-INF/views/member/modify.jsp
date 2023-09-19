@@ -11,50 +11,52 @@
 		<!-- 메인 -->
 		<main class="main member member member_update" id="member_update">
 			<div class="container">
-				<form action="/member/update.gg" method="post">
-					<h2 class="main_txt">정보수정</h2>
-					<ul>
-						<li>
-							<label>아이디</label>
-							<input type="text" name="memberId" value="${member.memberId}" readonly>
-						</li>
-						<li>
-							<label>비밀번호</label>
-							<input type="password" name="memberPwd" value="${member.memberPwd}">
-						</li>
-						<li>
-							<label>나이</label>
-							<input type="text" name="memberAge" value="${member.memberAge}" readonly>
-						</li>
-						<li>
-							<label>이름</label>
-							<input type="text" name="memberName" value="${member.memberName}" readonly>
-						</li>
-						<li>
-							<label>성별</label>
-							남자<input type="radio" id="member-gender" name="memberGender" value="M" <c:if test="${member.memberGender eq 'M' }">checked</c:if>>
-    	           			여자<input type="radio" id="member-gender" name="memberGender" value="F" <c:if test="${member.memberGender eq 'F' }">checked</c:if>>
-						</li>
-						<li>
-							<label>이메일</label>
-							<input type="text" name="memberEmail" value="${member.memberEmail}">
-						</li>
-						<li>
-							<label>전화번호</label>
-							<input type="text" name="memberPhone" value="${member.memberPhone}">
-						</li>
-						<li>
-							<label>주소</label>
-							<input type="text" id="member-address" name="memberAddress" value="${member.memberAddress}">
-							<input type="button" class="address_btn" onclick="sample4_execDaumPostcode();" value="주소 검색">
-						</li>
-					</ul>
-					<div class="btn_wrap">
-			            <button type="submit" class="btn_update">수정하기</button>
-			            <a href="/member/delete.gg?memberId=${member.memberId}" class="btn_delete">탈퇴하기</a>
-			            <a href="/member/mypage.gg?memberId=${member.memberId}" class="btn_prev">이전페이지로 이동</a>
-			         </div>
-				</form>
+				<div class="modify_wrap">
+          <form action="/member/update.gg" method="post">
+            <h2 class="main_txt">회원정보수정</h2>
+            <ul>
+              <li class="info_line">
+                <label>아이디</label>
+                <input type="text" name="memberId" value="${member.memberId}" readonly>
+              </li>
+              <li class="info_line">
+                <label>비밀번호</label>
+                <input type="password" name="memberPwd" value="${member.memberPwd}">
+              </li>
+              <li class="info_line">
+                <label>나이</label>
+                <input type="text" name="memberAge" value="${member.memberAge}" readonly>
+              </li>
+              <li class="info_line">
+                <label>이름</label>
+                <input type="text" name="memberName" value="${member.memberName}" readonly>
+              </li>
+              <li class="info_line info_gender">
+                <label>성별</label>
+                남자<input type="radio" id="member-gender" name="memberGender" value="M" <c:if test="${member.memberGender eq 'M' }">checked</c:if>>
+                여자<input type="radio" id="member-gender" name="memberGender" value="F" <c:if test="${member.memberGender eq 'F' }">checked</c:if>>
+              </li>
+              <li class="info_line">
+                <label>이메일</label>
+                <input type="text" name="memberEmail" value="${member.memberEmail}">
+              </li>
+              <li class="info_line">
+                <label>전화번호</label>
+                <input type="text" name="memberPhone" value="${member.memberPhone}">
+              </li>
+              <li class="info_line info_address">
+                <label>주소</label>
+                <input type="text" id="member-address" name="memberAddress" value="${member.memberAddress}">
+                <input type="button" class="address_btn" onclick="sample4_execDaumPostcode();" value="주소 검색">
+              </li>
+            </ul>
+            <div class="btn_wrap">
+	            <button type="submit" class="btn btn_update">수정하기</button>
+	            <a href="/member/delete.gg?memberId=${member.memberId}" class="btn btn_delete">탈퇴하기</a>
+	            <a href="/member/mypage.gg?memberId=${member.memberId}" class="btn btn_prev">이전페이지로 이동</a>
+            </div>
+          </form>
+        </div>
 			</div>
 		</main>
 		<!-- 푸터 -->
