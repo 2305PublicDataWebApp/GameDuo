@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/common.css">
     <link rel="stylesheet" href="/resources/css/layout.css">
+    <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/member.css">
     <link rel="stylesheet" href="/resources/css/notice.css">
     <link rel="stylesheet" href="/resources/css/board.css">
