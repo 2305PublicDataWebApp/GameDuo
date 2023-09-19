@@ -23,4 +23,7 @@ public interface NoticeService {
 		int updateNotice(Notice notice);
 
 
+		int deleteNotice(Notice notice);
+
+
 }

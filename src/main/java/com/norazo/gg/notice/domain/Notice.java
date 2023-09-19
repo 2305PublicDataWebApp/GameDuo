@@ -3,16 +3,17 @@ package com.norazo.gg.notice.domain;
 import java.sql.Date;
 
 	public class Notice {
-		private Integer noticeNo;
+		private int noticeNo;
 		private String noticeTitle;
 		private String noticeContent;
 		private String noticeAdmin;
 		private Date nCreateDate;
 		private Date nUpdateDate;
-		public Integer getNoticeNo() {
+		
+		public int getNoticeNo() {
 			return noticeNo;
 		}
-		public void setNoticeNo(Integer noticeNo) {
+		public void setNoticeNo(int noticeNo) {
 			this.noticeNo = noticeNo;
 		}
 		public String getNoticeTitle() {
@@ -50,16 +51,6 @@ import java.sql.Date;
 			return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
 					+ ", noticeAdmin=" + noticeAdmin + ", nCreateDate=" + nCreateDate + ", nUpdateDate=" + nUpdateDate
 					+ "]";
-		}
-		public Notice(Integer noticeNo, String noticeTitle, String noticeContent, String noticeAdmin, Date nCreateDate,
-				Date nUpdateDate) {
-			super();
-			this.noticeNo = noticeNo;
-			this.noticeTitle = noticeTitle;
-			this.noticeContent = noticeContent;
-			this.noticeAdmin = noticeAdmin;
-			this.nCreateDate = nCreateDate;
-			this.nUpdateDate = nUpdateDate;
 		}
 		
 		

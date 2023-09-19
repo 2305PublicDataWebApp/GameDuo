@@ -128,8 +128,8 @@ public class NoticeController {
 						mv.setViewName("common/serviceFailed");
 					}
 				}else {
-					mv.addObject("msg", "공지사항 수정이 완료하지 않습니다.");
-					mv.addObject("error", "공지사항 수정 실패");
+					mv.addObject("msg", "공지사항 수정 권한이 없습니다.");
+					mv.addObject("error", "공지사항 수정 불가");
 					mv.addObject("url", "/notice/modify.gg?noticeNo="+notice.getNoticeNo());
 					mv.setViewName("common/serviceFailed");
 				}
@@ -219,5 +219,33 @@ public class NoticeController {
 				PageInfo pInfo = new PageInfo(currentPage, totalCount, naviTotalCount, recordCountPerPage, naviCountPerPage, startNavi, endNavi);
 				return pInfo;
 			}
+			
+			@RequestMapping(value="/notice/delete.gg", method=RequestMethod.GET)
+			public ModelAndView noticeDelete(ModelAndView mv
+					, @RequestParam("noticeNo") Integer noticeNo) {
+				try {
+					Notice notice = new Notice();
+					notice.setNoticeNo(noticeNo);
+						int result = nService.deleteNotice(notice);
+						System.out.println("result값"+result);
+						if(result > 0) {
+							mv.setViewName("redirect:/notice/list.gg");
+						} else {
+							mv.addObject("msg", "게시글 삭제가 완료되지 않았습니다.");
+							mv.addObject("error", "게시글 삭제 불가");
+							mv.addObject("url", "/notice/list.gg");
+							mv.setViewName("common/serviceFailed");
+						}
+				}catch (Exception e) {
+					mv.addObject("msg", "게시글 삭제가 완료되지 않았습니다.");
+					mv.addObject("error", e.getMessage());
+					mv.addObject("url", "/notice/list.gg");
+					mv.setViewName("common/serviceFailed");
+				}
+				return mv;
+			}
+			
+			
+			
 }
-
+			

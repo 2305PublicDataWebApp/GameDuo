@@ -19,4 +19,6 @@ public interface NoticeStore {
 	Notice selectNoticeByNo(SqlSession sqlSession, Integer noticeNo);
 
 	int updateNotice(SqlSession sqlSession, Notice notice);
+
+	int deleteNotice(SqlSession sqlSession, Notice notice);
 }

@@ -54,6 +54,13 @@ public class NoticeServiceImpl implements NoticeService{
 			int result = nStore.updateNotice(sqlSession,notice);
 			return result;
 		}
+
+		@Override
+		public int deleteNotice(Notice notice) {
+			// TODO Auto-generated method stub
+			int result = nStore.deleteNotice(sqlSession,notice);
+			return result;
+		}
 		
 	
 	
