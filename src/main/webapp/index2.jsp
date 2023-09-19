@@ -14,10 +14,10 @@
 		    		<img src="/resources/images/common/main_kv.jpg" alt="선계업데이트">
 		    	</li>
 		    	<ul class="event_banner">
-				  <li class="event_banner_item">
-					  <div class="event_txt_wrap">
-              <a href="" class="top_link_area">
-                <p class="txt_kor">롤<p>
+				  	<li class="event_banner_item">
+					  	<div class="event_txt_wrap">
+              	<a href="" class="top_link_area">
+                	<p class="txt_kor">롤<p>
                 <h3 class="txt_eng">LOL</h3>
               </a>
 					  </div>

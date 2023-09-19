@@ -100,7 +100,7 @@ public class NoticeController {
 				mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
 				mv.addObject("error", e.getMessage());
 				mv.addObject("url", "/notice/write.gg");
-				mv.setViewName("common/errorPage");
+				mv.setViewName("common/serviceFailed");
 			}
 			return mv;
 
@@ -122,7 +122,7 @@ public class NoticeController {
 				
 				int result = nService.updateNotice(notice);
 				if(result > 0) {
-					mv.setViewName("redirect:/notice/modify.gg?noticeNo="+notice.getNoticeNo());
+					mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
 				}else {
 					mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
 					mv.addObject("error", "게시글 수정 실패");
