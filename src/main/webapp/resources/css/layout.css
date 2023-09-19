@@ -7,7 +7,6 @@
 #header .logo a { display:block; font-size:0; width:100px; height:44px; background:url(/resources/images/common/vue_logo.png) center / cover no-repeat; } 
 #header .menu_right { position:absolute; top:18px; right:30px; display:flex; }
 #header .menu_right_item a { margin-right:10px; }
-#header .session { border-bottom:1px solid #000; }
 
 /* footer */
 #footer { background:#2f3238; padding:40px 0; }

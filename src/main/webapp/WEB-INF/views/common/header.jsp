@@ -12,7 +12,7 @@
 	    	</c:if>
 	    	
 	    	<c:if test = "${memberId ne null}">
-				<strong class="session">${memberName }</strong>님 환영합니다.<br>
+<%-- 				<strong class="session">${memberName }</strong>님 환영합니다.<br> --%>
 				<li class="menu_right_item"><a href="/member/logout.gg">로그아웃</a></li>
 				<li class="menu_right_item"><a href="/member/mypage.gg">마이페이지</a></li>
 				<li class=menu_right_item><a href="/notice/list.gg">공지사항</a></li>
