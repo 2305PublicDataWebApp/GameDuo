@@ -52,7 +52,7 @@ public class NoticeController {
 			}
 		
 		}catch(Exception e) {
-			mv.addObject("msg", "게시글 등록이 완료하지 않습니다.");
+			mv.addObject("msg", "공지사항 등록이 완료하지 않습니다.");
 			mv.addObject("error", e.getMessage());
 			mv.addObject("url", "/notice/write.gg");
 			mv.setViewName("common/serviceFailed");
@@ -80,7 +80,7 @@ public class NoticeController {
 				
 			}catch (Exception e) {
 				// TODO: handle exception
-				mv.addObject("msg", "게시글 등록이 완료하지 않습니다.");
+				mv.addObject("msg", "공지사항 등록이 완료하지 않습니다.");
 				mv.addObject("error", e.getMessage());
 				mv.addObject("url", "/notice/write.gg");
 				mv.setViewName("common/serviceFailed");
@@ -97,7 +97,7 @@ public class NoticeController {
 				mv.addObject("notice", notice);
 				mv.setViewName("notice/modify");
 			} catch (Exception e) {
-				mv.addObject("msg", "게시글 등록이 완료되지 않았습니다.");
+				mv.addObject("msg", "공지사항 등록이 완료되지 않았습니다.");
 				mv.addObject("error", e.getMessage());
 				mv.addObject("url", "/notice/write.gg");
 				mv.setViewName("common/serviceFailed");
@@ -118,28 +118,33 @@ public class NoticeController {
 				String memberId = (String)session.getAttribute("memberId");
 				String NoticeAdmin = notice.getNoticeAdmin();
 				if(NoticeAdmin != null && NoticeAdmin.equals(memberId)) {
+<<<<<<< HEAD
 					
 				
 				int result = nService.updateNotice(notice);
 				if(result > 0) {
 					mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
+=======
+					int result = nService.updateNotice(notice);
+					if(result > 0) {
+						mv.setViewName("redirect:/notice/detail.gg?noticeNo="+notice.getNoticeNo());
+					}else {
+						mv.addObject("msg", "공지사항 수정이 완료하지 않습니다.");
+						mv.addObject("error", "공지사항 수정 실패");
+						mv.addObject("url", "/notice/modify.gg?noticeNo="+notice.getNoticeNo());
+						mv.setViewName("common/serviceFailed");
+					}
+>>>>>>> branch 'master' of https://github.com/2305PublicDataWebApp/GameDuo.git
 				}else {
-					mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
-					mv.addObject("error", "게시글 수정 실패");
-					mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
+					mv.addObject("msg", "공지사항 수정이 완료하지 않습니다.");
+					mv.addObject("error", "공지사항 수정 실패");
+					mv.addObject("url", "/notice/modify.gg?noticeNo="+notice.getNoticeNo());
 					mv.setViewName("common/serviceFailed");
 				}
-			}else {
-				mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
-				mv.addObject("error", "게시글 수정 실패");
-				mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
-				mv.setViewName("common/serviceFailed");
-				}
 			}catch (Exception e) {
-				// TODO: handle exception
-				mv.addObject("msg", "게시글 수정이 완료하지 않습니다.");
-				mv.addObject("error", "게시글 수정 실패");
-				mv.addObject("url", "/notice/write.gg?noticeNo="+notice.getNoticeNo());
+				mv.addObject("msg", "공지사항 수정이 완료하지 않습니다.");
+				mv.addObject("error", e.getMessage());
+				mv.addObject("url", "/notice/modify.gg?noticeNo="+notice.getNoticeNo());
 				mv.setViewName("common/serviceFailed");
 			}
 			return mv;
@@ -165,15 +170,15 @@ public class NoticeController {
 //					if(!NList.isEmpty()) {
 //						mv.addObject("NList", NList).addObject("pInfo",pInfo).setViewName("notice/list");
 //					}else {
-//						mv.addObject("msg","게시글 등록이 완료되지 않1았습니다.");
-//						mv.addObject("error","게시글 상세조회 실패");
+//						mv.addObject("msg","공지사항 등록이 완료되지 않1았습니다.");
+//						mv.addObject("error","공지사항 상세조회 실패");
 //						mv.addObject("url","/notice/list.gg");
 //						mv.setViewName("common/serviceFailed");
 //					}
 //					
 //				}catch (Exception e) {
-//					mv.addObject("msg","게시글 목록 조회가 완료되지 않았습니다.");
-//					mv.addObject("error","게시글 상세조회 실패");
+//					mv.addObject("msg","공지사항 목록 조회가 완료되지 않았습니다.");
+//					mv.addObject("error","공지사항 상세조회 실패");
 //					mv.addObject("url", "/notice/write.gg");
 //					mv.setViewName("common/serviceFailed");
 //				}
@@ -193,13 +198,13 @@ public class NoticeController {
 				if(!nList.isEmpty()) {
 					mv.addObject("nList", nList).addObject("pInfo", pInfo).setViewName("notice/list");
 				}else {
-					mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
-					mv.addObject("error", "게시글 상세 조회 실패");
+					mv.addObject("msg", "공지사항 조회가 완료되지 않았습니다");
+					mv.addObject("error", "공지사항 상세 조회 실패");
 					mv.addObject("url", "/notice/list.gg");
 					mv.setViewName("common/serviceFailed");
 				}
 			} catch (Exception e) {
-				mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+				mv.addObject("msg", "공지사항 조회가 완료되지 않았습니다");
 				mv.addObject("error", e.getMessage());
 				mv.addObject("url", "/notice/write.gg");
 				mv.setViewName("common/serviceFailed");
