@@ -1,6 +1,7 @@
 package com.norazo.gg.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.norazo.gg.board.domain.Board;
 import com.norazo.gg.notice.domain.PageInfo;
@@ -57,4 +58,21 @@ public interface BoardService {
 	 * @return
 	 */
 	int deleteBoard(Board board);
+
+
+	/**
+	 * 게시글 검색 전체 갯수 Service
+	 * @param paramMap
+	 * @return
+	 */
+	int getListCount(Map<String, String> paramMap);
+
+
+	/**
+	 * 게시글 조건에 따라 키워드로 검색 Service
+	 * @param pInfo
+	 * @param paramMap
+	 * @return
+	 */
+	List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap);
 }

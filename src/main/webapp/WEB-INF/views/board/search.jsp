@@ -28,58 +28,41 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="board" items="${bList }" varStatus="i">
-					   <tr>
-						<td>${board.gameType }</td>
-						<c:url var="detailUrl" value="/board/detail.gg">
-							<c:param name="boardNo" value="${board.boardNo}"></c:param>
-						</c:url>
-						<td><a href="${detailUrl }">${board.boardTitle }</a></td>
-						<td>${board.boardWriter }</td>
-						<td>
-							${board.teamSize } 명
-						</td>
-						<td>${board.schedule }</td>
-						<td>
-							<fmt:formatDate pattern="yyyy-MM-dd" value="${board.bCreateDate }"/>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
+				<c:forEach var="board" items="${sList}">
+                    <tr>
+                        <td>${board.gameType}</td>
+                        <td>${board.boardTitle}</td>
+                        <td>${board.boardWriter}</td>
+                        <td>${board.teamSize} 명</td>
+                        <td>${board.schedule}</td>
+                        <td>${board.bCreateDate}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
 			<tfoot>	
 				<tr align="center">
 					<td colspan="5">
-						<c:if test="${pInfo.startNavi != 1}">
-							<c:url var="prevUrl" value="/board/list.gg">
-								<c:param name="page" value="${pInfo.startNavi-1}"></c:param>
-							</c:url>
-							<a href="${prevUrl }">[이전]</a>
-						</c:if>
 						<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
-							<c:url var="pageUrl" value="/board/list.gg">
+							<c:url var="pageUrl" value="/board/search.gg">
 								<c:param name="page" value="${p }"></c:param>
+								<c:param name="searchCondition" value="${searchCondition }"></c:param>
+								<c:param name="searchKeyword" value="${searchKeyword }"></c:param>
 							</c:url>
 							<a href="${pageUrl }">${p }</a>&nbsp;
 						</c:forEach>
-						<c:if test="${pInfo.endNavi != naviTotalCount}">
-							<c:url var="nextUrl" value="/board/list.gg">
-								<c:param name="page" value="${pInfo.endNavi+1}"></c:param>
-							</c:url>
-							<a href="${nextUrl }">[다음]</a>
-						</c:if>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
 						<form action="/board/search.gg"  method=get>
 							<select name="searchCondition">
-								<option value="all">전체</option>
-								<option value="game">게임종류</option>
-								<option value="writer">작성자</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
+								<option value="all" <c:if test="${searchCondition == 'all' }">selected</c:if>>전체</option>
+								<option value="game" <c:if test="${searchCondition == 'game' }"></c:if>>게임종류</option>
+								<option value="writer" <c:if test="${searchCondition == 'writer' }">selected</c:if>>작성자</option>
+								<option value="title" <c:if test="${searchCondition == 'title' }">selected</c:if>>제목</option>
+								<option value="content" <c:if test="${searchCondition == 'content' }"></c:if>>내용</option>
 							</select>
-							<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요">
+							<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요" value="${searchKeyword }">
 							<input type="submit" value="검색">
 						</form>
 					</td>

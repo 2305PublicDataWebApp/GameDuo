@@ -50,4 +50,42 @@
 		SELECT * FROM BOARD_TBL WHERE BOARD_NO = #{boardeNo }
 	</select>
 	
+	<select id="selectListByKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_TBL
+		<if test="searchCondition == 'all'">
+			WHERE BOARD_WRITER LIKE '%' ||#{searchKeyword}|| '%' OR BOARD_TITLE LIKE '%' ||#{searchKeyword}|| '%' OR BOARD_CONTENT LIKE '%' ||#{searchKeyword}|| '%' OR GAME_TYPE LIKE '%' ||#{searchKeyword}|| '%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE BOARD_WRITER LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE BOARD_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE BOARD_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'game'">
+			WHERE GAME_TYPE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+	</select>
+	
+	<select id="searchBoardsByKeyword" resultMap="boardResultMap">
+		SELECT * FROM BOARD_TBL
+		<if test="searchCondition == 'all'">
+			WHERE BOARD_WRITER LIKE '%' ||#{searchKeyword}|| '%' OR BOARD_TITLE LIKE '%' ||#{searchKeyword}|| '%' OR BOARD_CONTENT LIKE '%' ||#{searchKeyword}|| '%' OR GAME_TYPE LIKE '%' ||#{searchKeyword}|| '%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE BOARD_WRITER LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE BOARD_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE BOARD_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'game'">
+			WHERE GAME_TYPE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+	</select>
+	
 </mapper>

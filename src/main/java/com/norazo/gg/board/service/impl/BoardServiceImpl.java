@@ -1,6 +1,7 @@
 package com.norazo.gg.board.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,18 @@ public class BoardServiceImpl implements BoardService{
 	public int deleteBoard(Board board) {
 		int result = bStore.deleteBoard(sqlSession, board);
 		return result;
+	}
+
+	@Override
+	public int getListCount(Map<String, String> paramMap) {
+		int result = bStore.selectListCount(sqlSession, paramMap);
+		return result;
+	}
+
+	@Override
+	public List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap) {
+		List<Board> searchList = bStore.searchBoardsByKeyword(sqlSession, pInfo, paramMap);
+		return searchList;
 	}
 
 }

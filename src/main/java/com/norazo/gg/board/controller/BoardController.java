@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -145,43 +146,39 @@ public class BoardController {
 	    }
 	    return mv;
 	}
+
+	@RequestMapping(value="/search.gg", method=RequestMethod.GET)
+	public String searchNoticeList(
+			@RequestParam("searchCondition") String searchCondition
+		, @RequestParam("searchKeyword") String searchKeyword
+		, @RequestParam(value="page", required=false, defaultValue="1") Integer currentPage
+		, Model model) {
+			// 2개의 값을 하나의 변수로 다루는 방법
+			// 1. VO 클래스 만드는 방법(이미해봄)
+			// 2. HashMap 사용하는 방법(안해봄)
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("searchCondition", searchCondition); // if문 안 test구문
+			paramMap.put("searchKeyword", searchKeyword); // if문안에쿼리문 (잔디에캡쳐도함)
+			int totalCount = bService.getListCount(paramMap);
+			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			// put() 메소드를 사용해서 key-value 설정을 하는데
+			// key값(파란색)이 mapper.xml에서 사용된다!!
+			List<Board> searchList = bService.searchBoardsByKeyword(pInfo, paramMap);
+			
+			if(!searchList.isEmpty()) {
+				model.addAttribute("searchCondition", searchCondition);
+				model.addAttribute("searchKeyword", searchKeyword);
+				model.addAttribute("pInfo", pInfo);
+				model.addAttribute("sList", searchList);
+				return "board/search";
+			} else {
+				model.addAttribute("msg", "데이터 조회가 완료되지 않았습니다.");
+				model.addAttribute("error", "공지사항 제목으로 조회 실패");
+				model.addAttribute("url", "/list.gg");
+				return "common/serviceFailed";
+			}
+		}
 	
-//	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
-//	public ModelAndView boardDelete(ModelAndView mv
-//			, @RequestParam("boardNo") Integer boardNo
-//			, @RequestParam("boardWriter") String boardWriter
-//			, HttpSession session) {
-//		try {
-//			String memberName = (String)session.getAttribute("memberName");
-//			Board board = new Board();
-//			board.setBoardNo(boardNo);
-//			board.setBoardWriter(boardWriter);
-//			if(boardWriter != null && boardWriter.equals(memberName)) {
-//				int result = bService.deleteBoard(board);
-//				System.out.println("result값"+result);
-//				if(result > 0) {
-//					mv.setViewName("redirect:/board/list.gg");
-//				} else {
-//					mv.addObject("msg", "게시글 삭제가 완료되지 않았습니다.");
-//					mv.addObject("error", "게시글 삭제 불가");
-//					mv.addObject("url", "/board/list.gg");
-//					mv.setViewName("common/serviceFailed");
-//				}
-//			} else {
-//				mv.addObject("msg", "본인이 작성한 글만 삭제할수 있습니다.");
-//				mv.addObject("error", "게시글 삭제 불가");
-//				mv.addObject("url", "/board/list.gg");
-//				mv.setViewName("common/serviceFailed");
-//			}
-//		} catch (Exception e) {
-//			mv.addObject("msg", "관리자에게 문의바랍니다~");
-//			mv.addObject("error", e.getMessage());
-//			mv.addObject("url", "/board/list.gg");
-//			mv.setViewName("common/serviceFailed");
-//		}
-//		return mv;
-//	}
-//	
 	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
 	public ModelAndView boardDelete(ModelAndView mv
 			, @RequestParam("boardNo") Integer boardNo) {

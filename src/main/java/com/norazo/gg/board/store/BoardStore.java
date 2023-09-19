@@ -1,6 +1,7 @@
 package com.norazo.gg.board.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -55,5 +56,22 @@ public interface BoardStore {
 	 * @return
 	 */
 	int deleteBoard(SqlSession sqlSession, Board board);
+
+	/**
+	 * 게시글 검색 전체 갯수 Store
+	 * @param sqlSession
+	 * @param paramMap
+	 * @return
+	 */
+	int selectListCount(SqlSession sqlSession, Map<String, String> paramMap);
+
+	/**
+	 * 게시글 조건에 따라 키워드로 조회 Store
+	 * @param sqlSession
+	 * @param pInfo
+	 * @param paramMap
+	 * @return
+	 */
+	List<Board> searchBoardsByKeyword(SqlSession sqlSession, PageInfo pInfo, Map<String, String> paramMap);
 
 }
