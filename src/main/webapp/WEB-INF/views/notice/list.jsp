@@ -76,12 +76,13 @@
 									<option value="title">제목</option>
 									<option value="content">내용</option>
 								</select> <input type="text" name="searchKeyword"
-									placeholder="검색어를 입력하세요"> <input type="submit"
-									value="검색">
+									placeholder="검색어를 입력하세요"> <input type="submit" value="검색">
 							</form>
 						</td>
 						<td>
-							<button type="button" onClick="location.href='/notice/write.gg'">글쓰기</button>
+							<c:if test="${memberId == 'admin'}">
+							    <button type="button" onclick="location.href='/notice/write.gg'">글쓰기</button>
+							</c:if>
 						</td>
 					</tr>
 				</tfoot>

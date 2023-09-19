@@ -23,7 +23,7 @@
 	 				</li>
 					<li>
 						<label>작성자</label>
-						<span>${memberId }</span>
+						<span>${memberName }</span>
 	 				</li>
 				</ul> 
 				<div>
