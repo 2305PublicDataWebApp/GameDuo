@@ -11,47 +11,48 @@
 		<!-- 메인 -->
 		<main class="main member member_mypage" id="member_mypage">
 			<div class="container">
-				<form action="/member/mypage.gg" method="post">
-					<h2>마이페이지</h2>
-					<ul>
-						<li>
-							<label>아이디</label>
-							<input type="text" name="memberId" value="${member.memberId}" readonly>
-						</li>
-						<li>
-							<label>비밀번호</label>
-							<input type="password" name="memberPwd" value="${member.memberPwd}" readonly>
-						</li>
-						<li>
-							<label>나이</label>
-							<input type="text" name="memberAge" value="${member.memberAge}" readonly>
-						</li>
-						<li>
-							<label>이름</label>
-							<input type="text" name="memberName" value="${member.memberName}" readonly>
-						</li>
-						<li>
-							<label>성별</label>
-							<input type="text" name="memberGender" value="${member.memberGender}" <c:if test="${member.memberGender eq 'M'}"></c:if>>
-						</li>
-						<li>
-							<label>이메일</label>
-							<input type="text" name="memberEmail" value="${member.memberEmail}" readonly>
-						</li>
-						<li>
-							<label>전화번호</label>
-							<input type="text" name="memberPhone" value="${member.memberPhone}" readonly>
-						</li>
-						<li>
-							<label>주소</label>
-							<input type="text" id="member-address" name="memberAddress" value="${member.memberAddress}" readonly>
-							<input type="button" class="address_btn" onclick="sample4_execDaumPostcode();" value="주소 검색">
-						</li>
-					</ul>
-					<div class="btn_wrap">
-			            <a href="/member/update.gg?memberId=${member.memberId}" class="btn_update">수정페이지이동</a>
-			         </div>
-				</form>
+				<div class="mypage_wrap">
+          <form action="/member/mypage.gg" method="post">
+            <h2 class="main_txt">마이페이지</h2>
+            <ul>
+              <li>
+                <label>아이디</label>
+                <input type="text" name="memberId" value="${member.memberId}" readonly>
+              </li>
+              <li>
+                <label>비밀번호</label>
+                <input type="password" name="memberPwd" value="${member.memberPwd}" readonly>
+              </li>
+              <li>
+                <label>나이</label>
+                <input type="text" name="memberAge" value="${member.memberAge}" readonly>
+              </li>
+              <li>
+                <label>이름</label>
+                <input type="text" name="memberName" value="${member.memberName}" readonly>
+              </li>
+              <li>
+                <label>성별</label>
+                <input type="text" name="memberGender" value="${member.memberGender}" readonly<c:if test="${member.memberGender eq 'M'}"></c:if>>
+              </li>
+              <li>
+                <label>이메일</label>
+                <input type="text" name="memberEmail" value="${member.memberEmail}" readonly>
+              </li>
+              <li>
+                <label>전화번호</label>
+                <input type="text" name="memberPhone" value="${member.memberPhone}" readonly>
+              </li>
+              <li>
+                <label>주소</label>
+                <input type="text" id="member-address" name="memberAddress" value="${member.memberAddress}" readonly>
+              </li>
+            </ul>
+            <div class="btn_wrap">
+            	<a href="/member/update.gg?memberId=${member.memberId}" class="btn_update">수정페이지이동</a>
+           	</div>
+          </form>
+        </div>
 			</div>
 		</main>
 		<!-- 푸터 -->

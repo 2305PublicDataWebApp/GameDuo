@@ -86,7 +86,7 @@ public class MemberController {
 	public String memberLogout(HttpSession session, Model model) {
 		if(session != null) {
 			session.invalidate();
-			return "member/login";
+			return "redirect:/index.jsp";
 		} else {
 			model.addAttribute("msg", "로그아웃을 완료하지 못했습니다.");
 			model.addAttribute("error", "로그아웃 실패");

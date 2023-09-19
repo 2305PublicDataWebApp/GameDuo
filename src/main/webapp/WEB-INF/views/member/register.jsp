@@ -12,7 +12,7 @@
 		<main class="main member member_register" id="member_register">
 			<div class="container">
 				<form action="/member/register.gg" method="post">
-					<h2>회원가입</h2>
+					<h2 class="main_txt">회원가입</h2>
 					<ul>
 						<li>
 							<label>아이디</label>

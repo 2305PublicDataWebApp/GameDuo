@@ -12,7 +12,7 @@
 		<main class="main member member member_update" id="member_update">
 			<div class="container">
 				<form action="/member/update.gg" method="post">
-					<h2>마이페이지</h2>
+					<h2 class="main_txt">정보수정</h2>
 					<ul>
 						<li>
 							<label>아이디</label>
