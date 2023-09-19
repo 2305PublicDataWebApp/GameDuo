@@ -24,15 +24,11 @@ public class NoticeController {
 		@Autowired
 		private NoticeService nService;
 		
-		
-		
-		
 		@RequestMapping(value="/notice/write.gg", method = RequestMethod.GET)
 		public ModelAndView showWriteForm(ModelAndView mv) {
 			mv.setViewName("notice/write");
 			return mv;
 		}
-		
 		
 		@RequestMapping(value="/notice/write.gg", method = RequestMethod.POST)
 		public ModelAndView noticeRegister(
@@ -192,6 +188,7 @@ public class NoticeController {
 			try {
 				Integer totalCount = nService.getListCount();
 				PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+//				System.out.println("pInfo값:" + pInfo);
 				List<Notice> nList = nService.selectNotice(pInfo);
 				if(!nList.isEmpty()) {
 					mv.addObject("nList", nList).addObject("pInfo", pInfo).setViewName("notice/list");

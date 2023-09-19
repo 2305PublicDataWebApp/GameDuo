@@ -8,8 +8,8 @@ import java.sql.Date;
 		private String noticeContent;
 		private String noticeAdmin;
 		private Date nCreateDate;
-		
-		public int getNoticeNo() {
+		private Date nUpdateDate;
+		public Integer getNoticeNo() {
 			return noticeNo;
 		}
 		public void setNoticeNo(Integer noticeNo) {
@@ -39,19 +39,29 @@ import java.sql.Date;
 		public void setnCreateDate(Date nCreateDate) {
 			this.nCreateDate = nCreateDate;
 		}
+		public Date getnUpdateDate() {
+			return nUpdateDate;
+		}
+		public void setnUpdateDate(Date nUpdateDate) {
+			this.nUpdateDate = nUpdateDate;
+		}
 		@Override
 		public String toString() {
 			return "Notice [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContent=" + noticeContent
-					+ ", noticeAdmin=" + noticeAdmin + ", nCreateDate=" + nCreateDate + "]";
+					+ ", noticeAdmin=" + noticeAdmin + ", nCreateDate=" + nCreateDate + ", nUpdateDate=" + nUpdateDate
+					+ "]";
 		}
-		
-		public Notice(Integer noticeNo, String noticeTitle, String noticeContent, String noticeAdmin, Date nCreateDate) {
+		public Notice(Integer noticeNo, String noticeTitle, String noticeContent, String noticeAdmin, Date nCreateDate,
+				Date nUpdateDate) {
 			super();
 			this.noticeNo = noticeNo;
 			this.noticeTitle = noticeTitle;
 			this.noticeContent = noticeContent;
 			this.noticeAdmin = noticeAdmin;
 			this.nCreateDate = nCreateDate;
+			this.nUpdateDate = nUpdateDate;
 		}
+		
+		
 
 }
