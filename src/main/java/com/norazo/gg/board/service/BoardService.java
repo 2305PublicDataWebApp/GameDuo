@@ -28,10 +28,33 @@ public interface BoardService {
 	 */
 	List<Board> selectBoardList(PageInfo pInfo);
 
+//	/**
+//	 * 게시글 상세 조회 Service
+//	 * @param boardNo
+//	 * @return
+//	 */
+//	Board selectBoardNo(Integer boardNo);
+
 	/**
-	 * 게시글 상세 조회 Service
+	 * 게시글 상세 조회, 수정 페이지 Service
 	 * @param boardNo
 	 * @return
 	 */
-	Board selectBoardNo(Integer boardNo);
+	Board selectBoardByNo(Integer boardNo);
+
+
+	/**
+	 * 게시글 수정 Service
+	 * @param board
+	 * @return
+	 */
+	int updateBoard(Board board);
+
+	
+	/**
+	 * 게시글 삭제 Service
+	 * @param board
+	 * @return
+	 */
+	int deleteBoard(Board board);
 }

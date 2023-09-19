@@ -75,11 +75,167 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/modify.gg", method=RequestMethod.GET)
+	public ModelAndView showModifyForm(ModelAndView mv
+			, @RequestParam("boardNo") Integer boardNo) {
+		try {
+			Board board = bService.selectBoardByNo(boardNo);
+			mv.addObject("board", board);
+			mv.setViewName("board/modify");
+		} catch (Exception e) {
+			mv.addObject("msg", "게시글 수정페이지 조회가 완료되지 않았습니다.");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/board/detail.gg");
+			mv.setViewName("common/serviceFailed");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/modify.gg", method=RequestMethod.POST)
+	public ModelAndView boardModify(ModelAndView mv, @ModelAttribute Board board,
+	        @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile,
+	        HttpSession session, HttpServletRequest request,
+	        @RequestParam(value="deleteFile", required=false) boolean deleteFile) { 
+	    try {
+	        String memberName = (String)session.getAttribute("memberName");
+	        String boardWriter = board.getBoardWriter();
+	        if (boardWriter != null && boardWriter.equals(memberName)) {
+	            if (deleteFile) {
+	                String fileRename = board.getBoardFileRename();
+	                if (fileRename != null) {
+	                    deleteFile(fileRename, request);
+	                    board.setBoardFilename(null);
+	                    board.setBoardFileRename(null);
+	                    board.setBoardFilepath(null);
+	                    board.setBoardFileLength(0);
+	                }
+	            }
+	            if (uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+	                String fileRename = board.getBoardFileRename();
+	                if (fileRename != null) {
+	                    this.deleteFile(fileRename, request);
+	                }
+	                Map<String, Object> bFileMap = this.saveFile(request, uploadFile);
+	                board.setBoardFilename((String)bFileMap.get("fileName"));
+	                board.setBoardFileRename((String)bFileMap.get("fileRename"));
+	                board.setBoardFilepath((String)bFileMap.get("filePath"));
+	                board.setBoardFileLength((long)bFileMap.get("fileLength"));
+	            }
+	            int result = bService.updateBoard(board);
+	            if (result > 0) {
+	                mv.setViewName("redirect:/board/detail.gg?boardNo=" + board.getBoardNo());
+	            } else {
+	                mv.addObject("msg", "게시글 수정이 완료되지 않았습니다.");
+	                mv.addObject("error", "게시글 수정 실패");
+	                mv.addObject("url", "/board/modify.gg?boardNo=" + board.getBoardNo());
+	                mv.setViewName("common/serviceFailed");
+	            }
+	        } else {
+	            mv.addObject("msg", "게시글 수정 권한이 없습니다.");
+	            mv.addObject("error", "게시글 수정 불가");
+	            mv.addObject("url", "/board/modify.gg?boardNo=" + board.getBoardNo());
+	            mv.setViewName("common/serviceFailed");
+	        }
+	    } catch (Exception e) {
+	        mv.addObject("msg", "관리자에게 문의바랍니다.");
+	        mv.addObject("error", e.getMessage());
+	        mv.addObject("url", "/board/modify.gg?boardNo=" + board.getBoardNo());
+	        mv.setViewName("common/serviceFailed");
+	    }
+	    return mv;
+	}
+	
+//	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
+//	public ModelAndView boardDelete(ModelAndView mv
+//			, @RequestParam("boardNo") Integer boardNo
+//			, @RequestParam("boardWriter") String boardWriter
+//			, HttpSession session) {
+//		try {
+//			String memberName = (String)session.getAttribute("memberName");
+//			Board board = new Board();
+//			board.setBoardNo(boardNo);
+//			board.setBoardWriter(boardWriter);
+//			if(boardWriter != null && boardWriter.equals(memberName)) {
+//				int result = bService.deleteBoard(board);
+//				System.out.println("result값"+result);
+//				if(result > 0) {
+//					mv.setViewName("redirect:/board/list.gg");
+//				} else {
+//					mv.addObject("msg", "게시글 삭제가 완료되지 않았습니다.");
+//					mv.addObject("error", "게시글 삭제 불가");
+//					mv.addObject("url", "/board/list.gg");
+//					mv.setViewName("common/serviceFailed");
+//				}
+//			} else {
+//				mv.addObject("msg", "본인이 작성한 글만 삭제할수 있습니다.");
+//				mv.addObject("error", "게시글 삭제 불가");
+//				mv.addObject("url", "/board/list.gg");
+//				mv.setViewName("common/serviceFailed");
+//			}
+//		} catch (Exception e) {
+//			mv.addObject("msg", "관리자에게 문의바랍니다~");
+//			mv.addObject("error", e.getMessage());
+//			mv.addObject("url", "/board/list.gg");
+//			mv.setViewName("common/serviceFailed");
+//		}
+//		return mv;
+//	}
+//	
+	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
+	public ModelAndView boardDelete(ModelAndView mv
+			, @RequestParam("boardNo") Integer boardNo) {
+		try {
+			Board board = new Board();
+			board.setBoardNo(boardNo);
+				int result = bService.deleteBoard(board);
+				System.out.println("result값"+result);
+				if(result > 0) {
+					mv.setViewName("redirect:/board/list.gg");
+				} else {
+					mv.addObject("msg", "게시글 삭제가 완료되지 않았습니다.");
+					mv.addObject("error", "게시글 삭제 불가");
+					mv.addObject("url", "/board/list.gg");
+					mv.setViewName("common/serviceFailed");
+				}
+		} catch (Exception e) {
+			mv.addObject("msg", "관리자에게 문의바랍니다~");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/board/list.gg");
+			mv.setViewName("common/serviceFailed");
+		}
+		return mv;
+	}
+	@RequestMapping(value="/list.gg", method=RequestMethod.GET)
+	public ModelAndView showBoardList(
+			@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage
+			, ModelAndView mv) {
+		try {
+			Integer totalCount = bService.getListCount();
+			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
+			List<Board> bList = bService.selectBoardList(pInfo);
+			if(!bList.isEmpty()) {
+				mv.addObject("bList", bList).addObject("pInfo", pInfo).setViewName("board/list");
+			}else {
+				mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+				mv.addObject("error", "게시글 상세 조회 실패");
+				mv.addObject("url", "/board/list.gg");
+				mv.setViewName("common/errorPage");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", "/board/write.gg");
+			mv.setViewName("common/serviceFailed");
+		}
+		return mv;
+	}
+	
 	@RequestMapping(value="/detail.gg", method=RequestMethod.GET)
 	public ModelAndView showBoardDetail(ModelAndView mv
 			, @RequestParam("boardNo") Integer boardNo) {
 		try {
-			Board boardOne = bService.selectBoardNo(boardNo);
+			Board boardOne = bService.selectBoardByNo(boardNo);
 			if(boardOne != null) {
 				List<Reply> replyList = rService.selectReplyList(boardNo);
 				System.out.println("replyList값" + replyList);
@@ -102,32 +258,7 @@ public class BoardController {
 		}
 		return mv;
 	}
-	
-	@RequestMapping(value="/list.gg", method=RequestMethod.GET)
-	public ModelAndView showBoardList(
-			@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage
-			, ModelAndView mv) {
-		try {
-			Integer totalCount = bService.getListCount();
-			PageInfo pInfo = this.getPageInfo(currentPage, totalCount);
-			List<Board> bList = bService.selectBoardList(pInfo);
-			if(!bList.isEmpty()) {
-				mv.addObject("bList", bList).addObject("pInfo", pInfo).setViewName("board/list");
-			}else {
-				mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
-				mv.addObject("error", "게시글 상세 조회 실패");
-				mv.addObject("url", "/board/list.kh");
-				mv.setViewName("common/errorPage");
-			}
-		} catch (Exception e) {
-			mv.addObject("msg", "게시글 조회가 완료되지 않았습니다");
-			mv.addObject("error", e.getMessage());
-			mv.addObject("url", "/board/write.gg");
-			mv.setViewName("common/serviceFailed");
-		}
-		return mv;
-	}
-	
+
 	public PageInfo getPageInfo(Integer currentPage, Integer totalCount) {
 			int recordCountPerPage = 10;
 			int naviCountPerPage = 10;
@@ -173,4 +304,12 @@ public class BoardController {
 		return fileMap;
 	}
 	
+	private void deleteFile(String fileRename, HttpServletRequest request) {
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String delPath = root + "\\buploadFiles\\" + fileRename;
+		File delFile = new File(delPath);
+		if(delFile.exists()) {
+			delFile.delete();
+		}
+	}
 }

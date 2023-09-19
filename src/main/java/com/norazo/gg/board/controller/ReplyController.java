@@ -87,10 +87,10 @@ public class ReplyController {
 			) {
 		String url =""; 
 		try {
-			String memberId = (String)session.getAttribute("memberId"); // 세션에서 아이디 가져오기(많이씀까먹지말긔!!)
+			String memberName = (String)session.getAttribute("memberName"); // 세션에서 아이디 가져오기(많이씀까먹지말긔!!)
 			String replyWriter = reply.getReplyWriter();
 			url = "/board/detail.gg?boardNo="+reply.getRefBoardNo();
-				if(replyWriter != null && replyWriter.equals(memberId)) { //널포인트익셉션방지
+				if(replyWriter != null && replyWriter.equals(memberName)) { //널포인트익셉션방지
 				int result = rService.deleteReply(reply);
 				if(result > 0) {
 					// 성공

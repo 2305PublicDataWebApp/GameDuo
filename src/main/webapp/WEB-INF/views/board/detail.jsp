@@ -30,21 +30,26 @@
 				<span>${board.schedule }</span>
 			</li>
 			<li>
-				<label>내용</label>
-				<p>${board.boardContent }</p>
-				<img alt="첨부파일" src="../resources/buploadFiles/${board.boardFilename }">
-				<img alt="첨부파일" src="/resources/buploadFiles/${board.boardFilename}">
-				<img alt="첨부파일" src="../resources/buploadFiles/${board.boardFilename }">
+			    <label>내용</label>
+			    <p>${board.boardContent }</p>
+			    <c:if test="${board.boardFileRename ne null}">
+			        <img alt="첨부파일" src="../resources/buploadFiles/${board.boardFileRename}">
+			    </c:if>
 			</li>
 			<li>
-				<label>첨부파일</label>
-				<a href="${board.boardFilepath }" download>${board.boardFilename }</a>
+				<c:if test="${board.boardFileRename ne null}">
+					<label>첨부파일</label>
+					<a href="${board.boardFilepath }" download>${board.boardFilename }</a>
+			    </c:if>
 			</li>
 		</ul>
 		<br><br>
 		<div>
-			<button type="button" onclick="showModifyPage();">수정하기</button>
-			<button>삭제하기</button>
+			<!-- 게시판 수정 -->
+			<c:if test="${sessionScope.memberName == board.boardWriter}">
+			    <button type="button" onclick="showModifyPage();">수정하기</button>
+			    <button type="button" onclick="deleteBoard();">삭제하기</button>
+			</c:if>
 			<button type="button" onclick="showBoardList();">목록으로</button>
 		</div>
 		<!-- 댓글 등록 -->
@@ -70,7 +75,7 @@
 				<td>${reply.replyContent }</td>
 				<td>${reply.rCreateDate }</td>
 				<td>
-					<a href="javascript:void(0)" onclick="showReplyModifyForm(this,'${reply.replyContent}');">수정하기</a> <!-- 기본이벤트없애기 javascript:void(0) this로 foreach문에 있는것을 탐색하기위해-->
+					<a href="javascript:void(0)" onclick="showReplyModifyForm(this,'${reply.replyContent}');">수정하기</a>
 						<c:url var="delUrl" value="/reply/delete.gg">
 							<c:param name="replyNo" value="${reply.replyNo}"></c:param>
 							<c:param name="replyWriter" value="${reply.replyWriter}"></c:param>
@@ -86,13 +91,20 @@
 			</c:forEach>
 		</table>
 		<script>
-			const deleteBoard = (boardUrl) => {
-				location.href = boardUrl;
-			}	
+		function deleteBoard() {
+		    if(confirm("게시글을 삭제하시겠습니까?")) {
+		        const boardNo = "${board.boardNo }";
+		        const deleteUrl = "/board/delete.gg?boardNo=" + boardNo;
+		        // 확인을 누르면 삭제 요청을 보냄
+		        location.href = deleteUrl;
+		    }
+		}
 			
 			function deleteReply(url){
 				/* alert(url); */
+			if(confirm("댓글을 삭제하시겠습니까?")){
 				location.href = url;
+				}
 			}
 			
 			function showModifyPage() {
