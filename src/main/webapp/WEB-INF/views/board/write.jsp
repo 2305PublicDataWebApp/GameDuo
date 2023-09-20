@@ -10,7 +10,7 @@
 		<main class="main board board_write" id="board_write">
       <div class="container">
         <div class="board_insert_wrap">
-          <h1>듀오찾기 글쓰기</h1>
+          <h1 class="main_txt">듀오찾기 글쓰기</h1>
           <form action="/board/write.gg" method="post" enctype="multipart/form-data">
             <ul>
               <li>
@@ -28,7 +28,7 @@
                     <option value="오버워치">오버워치</option>
                     <option value="배틀그라운드">배틀그라운드</option>
                     <option value="로스트아크">로스트아크</option>
-                    <option value="던전앤파이터">"던전앤파이터"</option>
+                    <option value="던전앤파이터">던전앤파이터</option>
                     <option value="기타">기타</option>
                 </select>
               </li>
@@ -49,7 +49,7 @@
                 <input type="file" name="uploadFile">
               </li>
             </ul>
-            <div>
+            <div class="btn_wrap">
               <input type="submit" value="등록">
             </div>
           </form>

@@ -13,47 +13,46 @@
         <div class="board_detail_wrap">
           <ul>
             <li>
-              <label>제목</label>
-              <span>${board.boardTitle }</span>
+              <label class="tit_txt">제목</label>
+              <span class="con_txt">${board.boardTitle }</span>
             </li>
             <li>
-              <label>작성자</label>
-              <span>${board.boardWriter }</span>
+              <label class="tit_txt">작성자</label>
+              <span class="con_txt">${board.boardWriter }</span>
             </li>
             <li>
-              <label>모집게임</label>
-              <span>${board.gameType }</span>
+              <label class="tit_txt">모집게임</label>
+              <span class="con_txt">${board.gameType }</span>
             </li>
             <li>
-              <label>모집인원</label>
-              <span>${board.teamSize }</span>
+              <label class="tit_txt">모집인원</label>
+              <span class="con_txt">${board.teamSize }</span>
             </li>
             <li>
-              <label>일정</label>
-              <span>${board.schedule }</span>
+              <label class="tit_txt">일정</label>
+              <span class="con_txt">${board.schedule }</span>
             </li>
             <li>
-	            <label>내용</label>
-	            <p>${board.boardContent }</p>
-	            <c:if test="${board.boardFileRename ne null}">
-	                <img alt="첨부파일" src="../resources/buploadFiles/${board.boardFileRename}">
-	            </c:if>
+              <label class="tit_txt">내용</label>
+              <p class="con_txt">${board.boardContent }</p>
+              <c:if test="${board.boardFileRename ne null}">
+                <img alt="첨부파일" src="../resources/buploadFiles/${board.boardFileRename}">
+              </c:if>
             </li>
             <li>
               <c:if test="${board.boardFileRename ne null}">
                 <label>첨부파일</label>
-                <a href="${board.boardFilepath }" download>${board.boardFilename }</a>
+                <a class="con_txt" href="${board.boardFilepath }" download>${board.boardFilename }</a>
                 </c:if>
             </li>
           </ul>
-          <br><br>
-          <div>
+          <div class="btn_wrap">
             <!-- 게시판 수정 -->
             <c:if test="${sessionScope.memberName == board.boardWriter}">
-                <button type="button" onclick="showModifyPage();">수정하기</button>
-                <button type="button" onclick="deleteBoard();">삭제하기</button>
+                <button type="button" onclick="showModifyPage();" class="btn btn_update">수정하기</button>
+                <button type="button" onclick="deleteBoard();" class="btn btn_delete">삭제하기</button>
             </c:if>
-            <button type="button" onclick="showBoardList();">목록으로</button>
+            <button type="button" onclick="showBoardList();" class="btn btn_list">목록으로</button>
           </div>
           <!-- 댓글 등록 -->
           <hr>

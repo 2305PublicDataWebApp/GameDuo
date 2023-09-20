@@ -9,8 +9,8 @@
 		<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 		<main class="main board board_modify" id="board_modify">
       <div class="container">
-        <div class="board_detail_wrap">
-          <h1>듀오찾기 수정페이지</h1>
+        <div class="board_modify_wrap">
+          <h1 class="main_txt">듀오찾기 수정페이지</h1>
           <form action="/board/modify.gg" method="post" enctype="multipart/form-data">
             <!-- 수정할 때, 리다이렉트 될 때 사용된다  -->
             <input type="hidden" name="boardNo" value="${board.boardNo }">
@@ -46,12 +46,12 @@
               </li>
               <li>
                 <label>첨부파일</label>
-                <a href="../resources/buploadFiles/${board.boardFilename }" download>${board.boardFilename }</a>
-                <button type="button" onclick="deleteAttachment();">파일 삭제</button>
+                <a href="../resources/buploadFiles/${board.boardFilename }" class="a_tag" download>${board.boardFilename }</a>
+                <button type="button" class="btn_delete" onclick="deleteAttachment();">파일 삭제</button>
                 <input type="file" name="uploadFile">
               </li>
             </ul>
-            <div>
+            <div class="btn_wrap">
               <input type="submit" value="수정완료">
               <input type="button" value="취소하기" onclick="goBack();">
             </div>

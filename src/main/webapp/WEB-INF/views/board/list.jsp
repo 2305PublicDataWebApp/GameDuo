@@ -11,6 +11,7 @@
 		<main class="main board board_list" id="board_list">
       <div class="container">
         <div class="board_list_wrap">
+        	<h1 class="main_txt">듀오찾기 리스트</h1>
           <table>
             <colgroup>
               <col width="10%"></col>
@@ -49,7 +50,7 @@
               </c:forEach>
             </tbody>
             <tfoot>
-              <tr align="center">
+              <tr align="center" class="paging_area">
                 <td colspan="5">
                   <c:if test="${pInfo.startNavi != 1}">
                     <c:url var="prevUrl" value="/board/list.gg">

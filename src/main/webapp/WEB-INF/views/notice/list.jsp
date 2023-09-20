@@ -17,7 +17,7 @@
           <colgroup>
             <col width="15%"></col>
             <col width="40%"></col>
-            <col width="10%"></col>
+            <col width="30%"></col>
             <col width="15%"></col>
           </colgroup>
           <thead>
