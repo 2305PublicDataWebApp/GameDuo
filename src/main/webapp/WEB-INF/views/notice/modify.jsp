@@ -10,28 +10,29 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
 	<main class="main notice notice_modify" id="notice_modify">
 		<div class="container">
-			<h1>공지사항 수정 modify</h1>
-			<form action="/notice/modify.gg" method="post" enctype="multipart/form-data">
-				<input type ="hidden" name = "noticeNo" value="${notice.noticeNo }">
-				<ul>
-					<li>
-						<label>제목</label>
-						<input type="text" name="noticeTitle" value="${notice.noticeTitle }">
-					</li>
-					<li>
-						<label>내용</label>
-						<textarea rows="4" cols="50" name="noticeContent">${notice.noticeContent }</textarea>
-					</li>
-					<li>
-						<label>작성자</label>
-						<input type="text" name="noticeAdmin" value="${notice.noticeAdmin }" readonly>
-					</li>
-					
-				</ul>
-				<div>
-					<input type="submit" value="등록">
-				</div>
-			</form>
+			<div class="notice_modify_wrap">
+        <h1 class="main_txt">공지사항 수정 modify</h1>
+        <form action="/notice/modify.gg" method="post" enctype="multipart/form-data">
+          <input type ="hidden" name = "noticeNo" value="${notice.noticeNo }">
+          <ul>
+            <li>
+              <label>제목</label>
+              <input type="text" name="noticeTitle" value="${notice.noticeTitle }">
+            </li>
+            <li>
+              <label>작성자</label>
+              <input type="text" name="noticeAdmin" value="${notice.noticeAdmin }" readonly>
+            </li>
+            <li>
+              <label>내용</label>
+              <textarea rows="4" cols="50" name="noticeContent">${notice.noticeContent }</textarea>
+            </li>
+          </ul>
+          <div class="btn_wrap">
+            <input type="submit" value="수정">
+          </div>
+        </form>
+      </div>
 		</div>
 	</main>
 	<!-- 푸터 -->

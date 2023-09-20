@@ -12,7 +12,7 @@
     	<div class="container">
         <div class="notice_insert_wrap">
           <form action="/notice/write.gg" method="post" enctype="multipart/form-data">
-            <h1>게시글 등록</h1>
+            <h1 class="main_txt">게시글 등록</h1>
             <ul>
               <li>
                 <label>제목</label>
