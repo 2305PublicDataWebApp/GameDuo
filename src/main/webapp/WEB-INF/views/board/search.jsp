@@ -33,7 +33,10 @@
               <c:forEach var="board" items="${sList}">
                 <tr>
                   <td>${board.gameType}</td>
-                  <td>${board.boardTitle}</td>
+                  <c:url var="detailUrl" value="/board/detail.gg">
+              		<c:param name="boardNo" value="${board.boardNo}"></c:param>
+           		  </c:url>
+                  <td><a href="${detailUrl }">${board.boardTitle}</a></td>
                   <td>${board.boardWriter}</td>
                   <td>${board.teamSize} 명</td>
                   <td>${board.schedule}</td>
