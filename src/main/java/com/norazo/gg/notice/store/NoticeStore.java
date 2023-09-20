@@ -1,6 +1,7 @@
 package com.norazo.gg.notice.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -21,4 +22,8 @@ public interface NoticeStore {
 	int updateNotice(SqlSession sqlSession, Notice notice);
 
 	int deleteNotice(SqlSession sqlSession, Notice notice);
+
+	int selectListCount(SqlSession sqlSession, Map<String, String> paramMap);
+
+	List<Notice> searchNoticesByKeyword(SqlSession sqlSession,PageInfo pInfo, Map<String, String> paramMap);
 }

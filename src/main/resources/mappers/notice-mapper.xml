@@ -34,4 +34,40 @@
 	<delete id = "deleteNotice" >
 		DELETE FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo }
 	</delete>
+	
+	<select id="selectListBykeywordCount" resultType="_int">
+			SELECT COUNT(*) FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_WRITER LIKE '%' ||#{searchKeyword}|| '%' OR NOTICE_TITLE LIKE '%' ||#{searchKeyword}|| '%' OR NOTICE_CONTENT LIKE '%' ||#{searchKeyword}|| '%' OR GAME_TYPE LIKE '%' ||#{searchKeyword}|| '%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		
+	</select>
+		<select id="searchNoticesByKeyword" resultMap="noticeResultMap">
+			SELECT * FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_WRITER LIKE '%' ||#{searchKeyword}|| '%' OR NOTICE_TITLE LIKE '%' ||#{searchKeyword}|| '%' OR NOTICE_CONTENT LIKE '%' ||#{searchKeyword}|| '%' OR GAME_TYPE LIKE '%' ||#{searchKeyword}|| '%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_TITLE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+		<if test="searchCondition == 'game'">
+			WHERE GAME_TYPE LIKE '%'|| #{searchKeyword} ||'%'
+		</if>
+	</select>
+	
 </mapper>

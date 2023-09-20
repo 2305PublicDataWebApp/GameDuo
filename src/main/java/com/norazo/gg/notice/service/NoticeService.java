@@ -1,7 +1,9 @@
 package com.norazo.gg.notice.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.norazo.gg.board.domain.Board;
 import com.norazo.gg.notice.domain.Notice;
 import com.norazo.gg.notice.domain.PageInfo;
 
@@ -24,6 +26,12 @@ public interface NoticeService {
 
 
 		int deleteNotice(Notice notice);
+
+
+		int getListCount(Map<String, String> paramMap);
+
+		List<Notice> searchNoticesByKeyword(PageInfo pInfo, Map<String, String> paramMap);
+
 
 
 }

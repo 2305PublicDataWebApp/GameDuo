@@ -1,11 +1,14 @@
 package com.norazo.gg.notice.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.norazo.gg.board.domain.Board;
 import com.norazo.gg.notice.domain.Notice;
 import com.norazo.gg.notice.domain.PageInfo;
 import com.norazo.gg.notice.service.NoticeService;
@@ -61,8 +64,25 @@ public class NoticeServiceImpl implements NoticeService{
 			int result = nStore.deleteNotice(sqlSession,notice);
 			return result;
 		}
+
+		@Override
+		public int getListCount(Map<String, String> paramMap) {
+			// TODO Auto-generated method stub
+			int result = nStore.selectListCount(sqlSession, paramMap);
+			return result;
+		}
+
 		
-	
-	
+		@Override
+		public List<Notice> searchNoticesByKeyword(PageInfo pInfo, Map<String, String> paramMap){
+			// TODO Auto-generated method stub
+		 List<Notice> searchList = nStore.searchNoticesByKeyword(sqlSession,pInfo, paramMap );
+		 return searchList;
+		}
+
 	
 }
+	
+	
+	
+
