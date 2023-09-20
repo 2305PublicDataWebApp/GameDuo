@@ -15,17 +15,15 @@
         <h1 class="main_txt">공지사항 목록</h1>
         <table>
           <colgroup>
-            <col width="10%"></col>
-            <col width="10%"></col>
+            <col width="15%"></col>
             <col width="40%"></col>
             <col width="10%"></col>
-            <col width="10%"></col>
+            <col width="15%"></col>
           </colgroup>
           <thead>
             <tr>
               <td>번호</td>
               <td>제목</td>
-              <td>내용</td>
               <td>작성자</td>
               <td>등록일</td>
             </tr>
@@ -34,7 +32,6 @@
             <c:forEach var="notice" items="${nList}" varStatus="i">
               <tr>
                 <td>${notice.noticeNo }</td>
-                <td>${notice.noticeTitle }</td>
                 <c:url var="detailUrl" value="/notice/detail.gg">
                   <c:param name="noticeNo" value="${notice.noticeNo }"></c:param>
                 </c:url>

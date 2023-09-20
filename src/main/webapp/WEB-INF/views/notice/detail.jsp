@@ -27,8 +27,10 @@
           </li>
         </ul>
         <div class="btn_wrap">
+        <c:if test="${memberName == notice.noticeAdmin }">
           <button type="button" onclick="showModifyPage();" class="btn btn_update">수정하기</button>
           <button type="button" onclick="deleteNotice();" class="btn btn_delete">삭제하기</button>
+        </c:if>
           <a href="/notice/list.gg" class="btn btn_list">목록으로</a>
         </div>
       </div>
