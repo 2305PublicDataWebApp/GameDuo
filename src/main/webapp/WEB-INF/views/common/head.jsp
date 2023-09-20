@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/resources/css/notice.css">
     <link rel="stylesheet" href="/resources/css/board.css">
     <link rel="stylesheet" href="/resources/css/reply.css">
+    <link rel="stylesheet" href="/resources/css/report.css">
     <script src="/resources/js/jquery-3.4.1.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script defer src="/resources/js/script.js"></script>
