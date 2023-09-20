@@ -11,6 +11,7 @@
 		<main class="main board board_search" id="board_search">
       <div class="container">
         <div class="board_search_wrap">
+        	<h1 class="main_txt">듀오찾기 검색</h1>
           <table>
             <colgroup>
               <col width="10%"></col>
@@ -45,7 +46,7 @@
                 </c:forEach>
               </tbody>
             <tfoot>
-              <tr align="center">
+              <tr align="center" class="paging_area">
                 <td colspan="5">
                   <c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
                     <c:url var="pageUrl" value="/board/search.gg">
@@ -59,7 +60,7 @@
               </tr>
               <tr>
                 <td colspan="4">
-                  <form action="/board/search.gg"  method=get>
+                  <form action="/board/search.gg"  method="get">
                     <select name="searchCondition">
                       <option value="all" <c:if test="${searchCondition == 'all' }">selected</c:if>>전체</option>
                       <option value="game" <c:if test="${searchCondition == 'game' }"></c:if>>게임종류</option>

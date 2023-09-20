@@ -29,7 +29,7 @@
               </li>
               <li class="info_line">
                 <label>이름</label>
-                <input type="text" name="memberName" value="${member.memberName}" readonly>
+                <input type="text" name="memberName" value="${member.memberName}">
               </li>
               <li class="info_line info_gender">
                 <label>성별</label>
