@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportMapper">
+	<resultMap type="Report" id="reportResultMap">
+		<id property="reportNo" column="REPORT_NO"/>
+		<result property="reportTitle" column="REPORT_TITLE"/>
+		<result property="reportContent" column="REPORT_CONTENT"/>
+		<result property="reportWriter" column="REPORT_WRITER"/>
+		<result property="rCreateDate" column="R_CREATE_DATE"/>
+		<result property="rUpdateDate" column="R_UPDATE_DATE"/>
+	</resultMap>
+	
+	<insert id="insertReport">
+		INSERT INTO REPORT_TBL VALUES(SEQ_REPORT_NO.NEXTVAL, #{reportTitle },#{reportContent },#{reportWriter},DEFAULT,DEFAULT)
+	</insert>
+	
+	<update id="updateReport">
+		UPDATE REPORT_TBL SET REPORT_TITLE = #{reportTitle}, REPORT_CONTENT = #{reportContent }, R_UPDATE_DATE = DEFAULT WHERE REPORT_NO = #{reportNo }
+	</update>
+	
+	<delete id="deleteReport">
+		DELETE FROM REPORT_TBL WHERE REPORT_NO = #{reportNo }
+	</delete>
+	
+	<select id="selectReport" resultMap="reportResultMap">
+		SELECT * FROM REPORT_TBL ORDER BY REPORT_NO DESC
+	</select>
+	
+	<select id="selectReportByNo" resultMap="reportResultMap">
+		SELECT * FROM REPORT_TBL WHERE REPORT_NO = #{reportNo }
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM REPORT_TBL
+	</select>
+	
+</mapper>

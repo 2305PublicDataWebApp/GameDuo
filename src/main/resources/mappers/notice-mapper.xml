@@ -18,7 +18,7 @@
 	
 	<select id="selectNotice" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL ORDER BY NOTICE_NO DESC
-	</select>
+	</select> 
 	
 	<select id="selectNoticeByNo" resultMap="noticeResultMap">
 		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO = #{noticeNo } <!-- 기본적으론 value 근데 헷갈릴수잇으므로 noticeNo -->
