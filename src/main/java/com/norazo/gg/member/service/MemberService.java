@@ -12,6 +12,20 @@ public interface MemberService {
 	public int registerMember(Member member);
 
 	/**
+	 * 회원 정보 수정 Service
+	 * @param member
+	 * @return
+	 */
+	public int updateMember(Member member);
+
+	/**
+	 * 회원 삭제 Service
+	 * @param memberId
+	 * @return
+	 */
+	public int deleteMember(String memberId);
+
+	/**
 	 * 회원 로그인 Service
 	 * @param member
 	 * @return
@@ -26,24 +40,10 @@ public interface MemberService {
 	public Member showOneById(String memberId);
 
 	/**
-	 * 회원 삭제 Service
-	 * @param memberId
-	 * @return
-	 */
-	public int deleteMember(String memberId);
-
-	/**
 	 * 회원정보 수정 전 체크 로직 Service
 	 * @param member
 	 * @return
 	 */
 	public Member selectCountCheck(Member member);
-
-	/**
-	 * 회원 정보 수정 Service
-	 * @param member
-	 * @return
-	 */
-	public int updateMember(Member member);
 
 }

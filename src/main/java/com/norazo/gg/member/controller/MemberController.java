@@ -35,7 +35,7 @@ public class MemberController {
 			int result = service.registerMember(member);
 			if(result > 0) {
 				// 성공시 로그인페이지로 이동
-				return "redirect:/index.jsp";
+				return "redirect:/member/login.gg";
 			} else {
 				// 실패시 에러페이지 이동
 				return "common/serviceFailed";
@@ -48,6 +48,71 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="/update.gg", method=RequestMethod.GET)
+	public String showUpdateView(
+			@RequestParam("memberId") String memberId
+			, Model model) {
+		try {
+			Member member = service.showOneById(memberId);
+			if(member != null) {
+				model.addAttribute("member", member);
+				return "member/modify";
+			} else {
+				model.addAttribute("msg", "데이터 조회에 실패했습니다.");
+				return "common/serviceFailed";
+			}
+		} catch (Exception e) {
+			model.addAttribute("msg", e.getMessage());
+			return "common/serviceFailed";
+		}
+	}
+
+	@RequestMapping(value="/update.gg", method=RequestMethod.POST)
+	public String updateMember(
+			@ModelAttribute Member member
+			, Model model) {
+		try {
+			Member confirmMember = service.selectCountCheck(member); 
+			if (confirmMember == null) {
+				int result = service.updateMember(member);
+				if(result > 0) {
+					return "redirect:/index.jsp";
+				} else {
+					model.addAttribute("msg", "회원정보 수정 실패");
+					return "common/serviceFailed";
+				}
+			}	else {
+				model.addAttribute("msg", "회원정보가같습니다..다시수정해주세요");
+				model.addAttribute("url", "/member/update.gg?memberId="+member.getMemberId());
+				return "common/serviceFailed";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", e.getMessage());
+			return "common/serviceFailed";
+		}
+	}
+
+	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
+	public String removeMember(
+		@RequestParam("memberId") String memberId
+		, Model model) {
+		try {
+			int result = service.deleteMember(memberId);
+			if(result > 0) {
+				return "redirect:/member/logout.gg";
+			} else {
+				model.addAttribute("msg", "회원탈퇴가 완료되지 않았습니다.");
+				return "common/serviceFailed";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", e.getMessage());
+			return "common/serviceFailed";
+		}
+		
+	}
+
 	@RequestMapping(value="/login.gg", method=RequestMethod.GET)
 	public ModelAndView showLoginForm(ModelAndView mv) {
 		mv.setViewName("member/login");
@@ -70,7 +135,7 @@ public class MemberController {
 			} else {
 				model.addAttribute("msg", "로그인이 완료되지 않았습니다.");
 				model.addAttribute("error", "로그인 실패");
-				model.addAttribute("url", "/index.jsp");
+				model.addAttribute("url", "/member/login.gg");
 				return "common/serviceFailed";
 			}
 		} catch (Exception e) {
@@ -119,72 +184,6 @@ public class MemberController {
 			model.addAttribute("msg", "관리자에게 문의해주세요.");
 			model.addAttribute("error", e.getMessage());
 			model.addAttribute("url", "/member/login.gg");
-			return "common/serviceFailed";
-		}
-		
-	}
-	
-	@RequestMapping(value="/update.gg", method=RequestMethod.GET)
-	public String showUpdateView(
-			@RequestParam("memberId") String memberId
-			, Model model) {
-		try {
-			Member member = service.showOneById(memberId);
-			if(member != null) {
-				model.addAttribute("member", member);
-				return "member/modify";
-			} else {
-				model.addAttribute("msg", "데이터 조회에 실패했습니다.");
-				return "common/serviceFailed";
-			}
-		} catch (Exception e) {
-			model.addAttribute("msg", e.getMessage());
-			return "common/serviceFailed";
-		}
-	}
-	
-	@RequestMapping(value="/update.gg", method=RequestMethod.POST)
-	public String updateMember(
-			@ModelAttribute Member member
-			, Model model) {
-		try {
-			Member confirmMember = service.selectCountCheck(member); 
-			if (confirmMember == null) {
-				int result = service.updateMember(member);
-				if(result > 0) {
-					return "redirect:/index.jsp";
-				} else {
-					model.addAttribute("msg", "회원정보 수정 실패");
-					return "common/serviceFailed";
-				}
-			}	else {
-				model.addAttribute("msg", "회원정보가같습니다..다시수정해주세요");
-				model.addAttribute("url", "/member/update.gg?memberId="+member.getMemberId());
-				return "common/serviceFailed";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("msg", e.getMessage());
-			return "common/serviceFailed";
-		}
-	}
-	
-	
-	@RequestMapping(value="/delete.gg", method=RequestMethod.GET)
-	public String removeMember(
-		@RequestParam("memberId") String memberId
-		, Model model) {
-		try {
-			int result = service.deleteMember(memberId);
-			if(result > 0) {
-				return "redirect:/member/logout.gg";
-			} else {
-				model.addAttribute("msg", "회원탈퇴가 완료되지 않았습니다.");
-				return "common/serviceFailed";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("msg", e.getMessage());
 			return "common/serviceFailed";
 		}
 		

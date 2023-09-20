@@ -16,38 +16,38 @@
             <h2 class="main_txt">회원가입</h2>
             <ul>
               <li class="info_line">
-                <label>아이디</label>
-                <input type="text" name="memberId">
+                <label for="memberId">아이디</label>
+                <input type="text" id="memberId" name="memberId">
               </li>
               <li class="info_line">
-                <label>비밀번호</label>
-                <input type="password" name="memberPwd">
+                <label for="memberPw">비밀번호</label>
+                <input type="password" id="memberPw" name="memberPwd">
               </li>
               <li class="info_line">
-                <label>나이</label>
-                <input type="text" name="memberAge">
+                <label for="memberAge">나이</label>
+                <input type="text" id="memberAge" name="memberAge">
               </li>
               <li class="info_line">
-                <label>이름</label>
-                <input type="text" name="memberName">
+                <label for="memberName">이름</label>
+                <input type="text" id="memberName" name="memberName">
               </li>
               <li class="info_line info_gender">
                 <label>성별</label>
                 <div class="check_radio">
-                남<input type="radio" id="member-gender" name="memberGender" value="남">
+                남<input type="radio" id="member-gender" name="memberGender" value="남" checked>
                 여<input type="radio" id="member-gender" name="memberGender" value="여">
                 </div>
               </li>
               <li class="info_line">
-                <label>이메일</label>
-                <input type="text" name="memberEmail">
+                <label for="memberEmail">이메일</label>
+                <input type="text" id="memberEmail" name="memberEmail">
               </li>
               <li class="info_line">
-                <label>전화번호</label>
-                <input type="text" name="memberPhone">
+                <label for="memberPhone">전화번호</label>
+                <input type="text" id="memberPhone" name="memberPhone">
               </li>
               <li class="info_line info_address">
-                <label>주소</label>
+                <label for="member-address">주소</label>
                 <input type="text" id="member-address" name="memberAddress">
                 <input type="button" class="address_btn" onclick="sample4_execDaumPostcode();" value="주소 검색">
               </li>

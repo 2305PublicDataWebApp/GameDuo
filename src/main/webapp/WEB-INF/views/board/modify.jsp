@@ -21,16 +21,16 @@
             <input type="hidden" name="boardFileLength" value="${board.boardFileLength }">
             <ul>
               <li>
-                <label>제목</label>
-                <input type="text" name="boardTitle" value="${board.boardTitle }">
+                <label for="boardTitle">제목</label>
+                <input type="text" id="boardTitle" name="boardTitle" value="${board.boardTitle }">
               </li>
               <li>
-                <label>작성자</label>
-                <input type="text" name="boardWriter" value="${board.boardWriter }" readonly>
+                <label for="boardWriter">작성자</label>
+                <input type="text" id="boardWriter" name="boardWriter" value="${board.boardWriter }" readonly>
               </li>
               <li>
-                <label>모집게임</label>
-                <input type="text" name="gameType" value="${board.gameType }" readonly>
+                <label for="gameType">모집게임</label>
+                <input type="text" id="gameType" name="gameType" value="${board.gameType }" readonly>
               </li>
               <li>
                 <label>모집인원</label>
