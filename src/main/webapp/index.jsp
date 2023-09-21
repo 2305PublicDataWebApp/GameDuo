@@ -68,7 +68,7 @@
 		    		<div class="gamebox_wrap">
               <ul class="gamebox_cont">
                 <li class="gamebox_item gamebox_item_01">
-                  <a href="/resources/images/common/main_kv.jpg" class="bot_link_area">
+                  <a href="https://df.nexon.com/pg/season9_seon?intro=yes" class="bot_link_area">
                     <div class="img_area">
                       <img src="/resources/images/common/banner_01.jpg" alt="던전앤파이터">
                     </div>
