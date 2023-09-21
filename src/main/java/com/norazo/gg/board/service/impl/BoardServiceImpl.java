@@ -26,8 +26,14 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int getListCount() {
-		int result = bStore.selectListCount(sqlSession);
+	public int updateBoard(Board board) {
+		int result = bStore.updateBoard(sqlSession, board);
+		return result;
+	}
+
+	@Override
+	public int deleteBoard(Board board) {
+		int result = bStore.deleteBoard(sqlSession, board);
 		return result;
 	}
 
@@ -50,15 +56,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int updateBoard(Board board) {
-		int result = bStore.updateBoard(sqlSession, board);
-		return result;
-	}
-
-	@Override
-	public int deleteBoard(Board board) {
-		int result = bStore.deleteBoard(sqlSession, board);
-		return result;
+	public List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap) {
+		List<Board> searchList = bStore.searchBoardsByKeyword(sqlSession, pInfo, paramMap);
+		return searchList;
 	}
 
 	@Override
@@ -68,9 +68,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap) {
-		List<Board> searchList = bStore.searchBoardsByKeyword(sqlSession, pInfo, paramMap);
-		return searchList;
+	public int getListCount() {
+		int result = bStore.selectListCount(sqlSession);
+		return result;
 	}
 
 }

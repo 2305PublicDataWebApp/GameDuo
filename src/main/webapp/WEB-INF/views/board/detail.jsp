@@ -26,7 +26,7 @@
             </li>
             <li>
               <label class="tit_txt">모집인원</label>
-              <span class="con_txt">${board.teamSize }</span>
+              <span class="con_txt">${board.teamSize }명</span>
             </li>
             <li>
               <label class="tit_txt">일정</label>
@@ -34,15 +34,15 @@
             </li>
             <li>
               <label class="tit_txt">내용</label>
-              <p class="con_txt">${board.boardContent }</p>
               <c:if test="${board.boardFileRename ne null}">
                 <img alt="첨부파일" src="../resources/buploadFiles/${board.boardFileRename}">
               </c:if>
+              <p class="con_txt">${board.boardContent }</p>
             </li>
             <li>
               <c:if test="${board.boardFileRename ne null}">
                 <label>첨부파일</label>
-                <a class="con_txt" href="${board.boardFilepath }" download>${board.boardFilename }</a>
+                <a class="con_txt" href="${board.boardFilepath }" download>${board.boardFileRename }</a>
                 </c:if>
             </li>
           </ul>

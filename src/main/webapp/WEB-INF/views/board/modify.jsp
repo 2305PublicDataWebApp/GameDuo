@@ -62,31 +62,30 @@
     <!-- 푸터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 		<script>
-		
-		function goBack() {
-		    window.history.back();
-		}	
-		
-		function deleteAttachment() {
-		    // 첨부 파일 링크 및 파일 삭제 버튼 요소 가져오기
-		    var fileLink = document.querySelector("a[href='../resources/buploadFiles/${board.boardFilename }']");
-		    var deleteButton = document.querySelector("button[type='button'][onclick='deleteAttachment();']");
-
-		    // 파일 삭제 여부 확인
-		    if (confirm("첨부 파일을 삭제하시겠습니까?")) {
-		        // 첨부 파일을 제거하고 파일 삭제 버튼 숨기기
-		        fileLink.parentNode.removeChild(fileLink);
-		        deleteButton.style.display = "none";
-
-		        // 파일 삭제를 서버에 전달하기 위해 관련 hidden input 필드 값 업데이트
-		        var uploadFileInput = document.querySelector("input[type='file'][name='uploadFile']");
-		        var fileDeleteInput = document.createElement("input");
-		        fileDeleteInput.type = "hidden";
-		        fileDeleteInput.name = "deleteFile";
-		        fileDeleteInput.value = "true";
-		        uploadFileInput.parentNode.appendChild(fileDeleteInput);
-		    }
-		}
+			function goBack() {
+			    window.history.back();
+			}	
+			
+			function deleteAttachment() {
+			    // 첨부 파일 링크 및 파일 삭제 버튼 요소 가져오기
+			    var fileLink = document.querySelector("a[href='../resources/buploadFiles/${board.boardFilename }']");
+			    var deleteButton = document.querySelector("button[type='button'][onclick='deleteAttachment();']");
+	
+			    // 파일 삭제 여부 확인
+			    if (confirm("첨부 파일을 삭제하시겠습니까?")) {
+			        // 첨부 파일을 제거하고 파일 삭제 버튼 숨기기
+			        fileLink.parentNode.removeChild(fileLink);
+			        deleteButton.style.display = "none";
+	
+			        // 파일 삭제를 서버에 전달하기 위해 관련 hidden input 필드 값 업데이트
+			        var uploadFileInput = document.querySelector("input[type='file'][name='uploadFile']");
+			        var fileDeleteInput = document.createElement("input");
+			        fileDeleteInput.type = "hidden";
+			        fileDeleteInput.name = "deleteFile";
+			        fileDeleteInput.value = "true";
+			        uploadFileInput.parentNode.appendChild(fileDeleteInput);
+			    }
+			}
 		</script>
 	</body>
 </html>

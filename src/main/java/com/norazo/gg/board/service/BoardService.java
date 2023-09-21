@@ -17,10 +17,20 @@ public interface BoardService {
 
 	
 	/**
-	 * 전체 게시물 갯수 Service
+	 * 게시글 수정 Service
+	 * @param board
 	 * @return
 	 */
-	int getListCount();
+	int updateBoard(Board board);
+
+
+	/**
+	 * 게시글 삭제 Service
+	 * @param board
+	 * @return
+	 */
+	int deleteBoard(Board board);
+
 
 	/**
 	 * 게시글 전체 조회 Service
@@ -45,19 +55,12 @@ public interface BoardService {
 
 
 	/**
-	 * 게시글 수정 Service
-	 * @param board
+	 * 게시글 조건에 따라 키워드로 검색 Service
+	 * @param pInfo
+	 * @param paramMap
 	 * @return
 	 */
-	int updateBoard(Board board);
-
-	
-	/**
-	 * 게시글 삭제 Service
-	 * @param board
-	 * @return
-	 */
-	int deleteBoard(Board board);
+	List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap);
 
 
 	/**
@@ -69,10 +72,8 @@ public interface BoardService {
 
 
 	/**
-	 * 게시글 조건에 따라 키워드로 검색 Service
-	 * @param pInfo
-	 * @param paramMap
+	 * 전체 게시물 갯수 Service
 	 * @return
 	 */
-	List<Board> searchBoardsByKeyword(PageInfo pInfo, Map<String, String> paramMap);
+	int getListCount();
 }

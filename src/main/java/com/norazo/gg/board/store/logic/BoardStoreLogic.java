@@ -21,8 +21,14 @@ public class BoardStoreLogic implements BoardStore{
 	}
 
 	@Override
-	public int selectListCount(SqlSession sqlSession) {
-		int result = sqlSession.selectOne("BoardMapper.selectListCount");
+	public int updateBoard(SqlSession sqlSession, Board board) {
+		int result = sqlSession.update("BoardMapper.updateBoard", board);
+		return result;
+	}
+
+	@Override
+	public int deleteBoard(SqlSession sqlSession, Board board) {
+		int result = sqlSession.delete("BoardMapper.deleteBoard", board);
 		return result;
 	}
 
@@ -42,15 +48,12 @@ public class BoardStoreLogic implements BoardStore{
 	}
 
 	@Override
-	public int updateBoard(SqlSession sqlSession, Board board) {
-		int result = sqlSession.update("BoardMapper.updateBoard", board);
-		return result;
-	}
-
-	@Override
-	public int deleteBoard(SqlSession sqlSession, Board board) {
-		int result = sqlSession.delete("BoardMapper.deleteBoard", board);
-		return result;
+	public List<Board> searchBoardsByKeyword(SqlSession sqlSession, PageInfo pInfo, Map<String, String> paramMap) {
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurrentPage()-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		List<Board> searchList = sqlSession.selectList("BoardMapper.searchBoardsByKeyword", paramMap, rowBounds);
+		return searchList;
 	}
 
 	@Override
@@ -60,12 +63,9 @@ public class BoardStoreLogic implements BoardStore{
 	}
 
 	@Override
-	public List<Board> searchBoardsByKeyword(SqlSession sqlSession, PageInfo pInfo, Map<String, String> paramMap) {
-		int limit = pInfo.getRecordCountPerPage();
-		int offset = (pInfo.getCurrentPage()-1)*limit;
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		List<Board> searchList = sqlSession.selectList("BoardMapper.searchBoardsByKeyword", paramMap, rowBounds);
-		return searchList;
+	public int selectListCount(SqlSession sqlSession) {
+		int result = sqlSession.selectOne("BoardMapper.selectListCount");
+		return result;
 	}	
 
 }
