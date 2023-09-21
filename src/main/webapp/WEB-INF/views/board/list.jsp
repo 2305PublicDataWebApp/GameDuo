@@ -11,7 +11,7 @@
 		<main class="main board board_list" id="board_list">
       <div class="container">
         <div class="board_list_wrap">
-        	<h1 class="main_txt">듀오찾기 리스트</h1>
+        	<h1 class="main_txt">듀오찾기</h1>
           <table>
             <colgroup>
               <col width="10%"></col>
@@ -87,7 +87,9 @@
                   </form>
                 </td>
                 <td>
-                  <button type="button" onClick="location.href='/board/write.gg'">글쓰기</button>
+	                <c:if test = "${memberId ne null}">
+	                	<button type="button" onClick="location.href='/board/write.gg'">글쓰기</button>
+	                </c:if>
                 </td>
               </tr>
             </tfoot>

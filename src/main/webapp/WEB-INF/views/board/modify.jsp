@@ -30,7 +30,7 @@
               </li>
               <li>
                 <label for="gameType">모집게임</label>
-                <input type="text" id="gameType" name="gameType" value="${board.gameType }" readonly>
+                <input type="text" id="gameType" name="gameType" value="${board.gameType }">
               </li>
               <li>
                 <label>모집인원</label>

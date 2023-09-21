@@ -16,7 +16,7 @@
 		    	<ul class="event_banner">
 				  <li class="event_banner_item">
 					  <div class="event_txt_wrap">
-              <a href="" class="top_link_area">
+              <a href="https://www.leagueoflegends.com/ko-kr/" class="top_link_area">
                 <p class="txt_kor">롤<p>
                 <h3 class="txt_eng">LOL</h3>
               </a>
@@ -24,7 +24,7 @@
 				  </li>
 				  <li class="event_banner_item">
 				  	<div class="event_txt_wrap">
-              <a href="" class="top_link_area">
+              <a href="https://df.nexon.com/pg/season9_seon?intro=yes" class="top_link_area">
                 <p class="txt_kor">던전앤파이터<p>
                 <h3 class="txt_eng">DUNGEON & FIGHER</h3>
               </a>
@@ -32,7 +32,7 @@
 				  </li>
 				  <li class="event_banner_item">
 				  	<div class="event_txt_wrap">
-				      <a href="" class="top_link_area">
+				      <a href="https://overwatch.blizzard.com/ko-kr/" class="top_link_area">
                 <p class="txt_kor">오버워치<p>
                 <h3 class="txt_eng">OVER WATCH</h3>
               </a>
@@ -40,7 +40,7 @@
 				  </li>
 				  <li class="event_banner_item">
 				  	<div class="event_txt_wrap">
-				      <a href="" class="top_link_area">
+				      <a href="https://www.pubg.com/ko/" class="top_link_area">
                 <p class="txt_kor">배틀그라운드<p>
                 <h3 class="txt_eng">BATTLE GROUND</h3>
               </a>
@@ -48,7 +48,7 @@
 				  </li>
 				  <li class="event_banner_item">
 				  	<div class="event_txt_wrap">
-              <a href="" class="top_link_area">
+              <a href="https://lostark.game.onstove.com/Promotion/Update/230913" class="top_link_area">
                 <p class="txt_kor">로스트아크<p>
                 <h3 class="txt_eng">LOST ARK</h3>
               </a>
@@ -68,7 +68,7 @@
 		    		<div class="gamebox_wrap">
               <ul class="gamebox_cont">
                 <li class="gamebox_item gamebox_item_01">
-                  <a href="" class="bot_link_area">
+                  <a href="/resources/images/common/main_kv.jpg" class="bot_link_area">
                     <div class="img_area">
                       <img src="/resources/images/common/banner_01.jpg" alt="던전앤파이터">
                     </div>
@@ -79,7 +79,7 @@
                   </a>
                 </li>
                 <li class="gamebox_item gamebox_item_02">
-                  <a href="" class="bot_link_area">
+                  <a href="https://www.leagueoflegends.com/ko-kr/" class="bot_link_area">
                     <div class="img_area">
                       <img src="/resources/images/common/banner_02_v3.jpg" alt="롤">
                     </div>
@@ -90,7 +90,7 @@
                   </a>
                 </li>
                 <li class="gamebox_item gamebox_item_03">
-                  <a href="" class="bot_link_area">
+                  <a href="https://overwatch.blizzard.com/ko-kr/" class="bot_link_area">
                     <div class="img_area">
                       <img src="/resources/images/common/banner_03.jpg" alt="오버워치">
                     </div>
@@ -101,7 +101,7 @@
                   </a>
                 </li>
                 <li class="gamebox_item gamebox_item_04">
-                  <a href="" class="bot_link_area">
+                  <a href="https://lostark.game.onstove.com/Promotion/Update/230913" class="bot_link_area">
                     <div class="img_area">
                       <img src="/resources/images/common/banner_04.jpg" alt="로스트아크">
                     </div>
